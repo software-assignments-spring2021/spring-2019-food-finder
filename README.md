@@ -11,11 +11,10 @@ they want to get food and the entire affair can be painful and irritating. That'
 a group of Computer Science students attempting to do what software developers do best: automate the process. 
 
 ## How to Contribute
-Coming Soon!
+[Contributing to Food Finder](https://github.com/nyu-software-engineering/food-finder/blob/master/CONTRIBUTING.md)
 
 ## Building and Testing
 Coming Soon!
 
 ### Check out some other links
-- [Contributing to Food Finder](https://github.com/nyu-software-engineering/food-finder/blob/master/CONTRIBUTING.md)
-- [Food Finder Requirements](Link will come)
+[Food Finder Requirements](Link will come)
