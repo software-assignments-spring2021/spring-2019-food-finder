@@ -18,9 +18,9 @@
 - What are some concerns you have for this project?
 - What would you like to see from the project?
 - Have you had experience with similar software? 
-* What was the experience like? 
-* Where did it help you? 
-* Where did it lack (if at all)?
+>* What was the experience like? 
+>* Where did it help you? 
+>* Where did it lack (if at all)?
 
 
 ### Amos Bloomberg
