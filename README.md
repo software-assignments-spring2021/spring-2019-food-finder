@@ -3,7 +3,7 @@
 ## Project Description
 Food Finder is a web app that aims to make finding restaurants more efficient. Users can filter through restaurants using criteria
 such as distance from current location, cuisine type, and price, compile a list of all restaurants that they have visited, and even 
-explore new restaurants in the area tbrough a randomized restaurant selection feature. 
+explore new restaurants in the area through a randomized restaurant selection feature. 
 
 ## Project History
 The concept for Food Finder came about through a desire to just find a place to eat. People waste a lot of time trying to decide where
