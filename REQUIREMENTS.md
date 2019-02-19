@@ -9,8 +9,8 @@
 ### Questions
 **Stakeholder as a User Questions:**
 - How do you usually decide where to go for food?
-- What do you like about your process?
-- What do you wish you could improve about it (if at all)?
+	* What do you like about your process?
+	* What do you wish you could improve about it (if at all)?
 - What are your criteria when searching for a restaurant?
 
 **Stakeholder as a Project Member Questions:**
