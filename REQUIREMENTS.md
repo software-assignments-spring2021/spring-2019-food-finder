@@ -13,8 +13,18 @@
 ### Wei-Kai
 
 ## End-User Observations
+We compiled these two personas based on observations of young professionals and college students as they searched for places to eat. Based on what we saw, as well
+as what they told us about their food search process, we created the following sections:
+
+- Food Search Process: how the user goes about finding a place to eat
+- Criteria/Preferences: what the user is looking for in terms of food
+- Goal: what the user wants from their meal experience
+- Pains: what the user does not like about the current process
+- Gains: what the user likes about their area
+- Desires: what the user wishes he or she could do more efficiently
 
 ### End-User 1: The Young Professional
+
 ![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/user2.png "Young Professional Persona")
 
 ### End-User 2: The College Student
