@@ -17,5 +17,5 @@ Coming Soon!
 Coming Soon!
 
 ### Check out some other links
-[Contributing to Food Finder](Link will come)
+[Contributing to Food Finder](https://github.com/nyu-software-engineering/food-finder/blob/master/CONTRIBUTING.md)
 [Food Finder Requirements](Link will come)
