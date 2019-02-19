@@ -7,6 +7,21 @@
 ## Stakeholder Interviews:
 
 ### Questions
+**Stakeholder as a User Questions:**
+- How do you usually decide where to go for food?
+- What do you like about your process?
+- What do you wish you could improve about it (if at all)?
+- What are your criteria when searching for a restaurant?
+
+**Stakeholder as a Project Member Questions:**
+- What do you think the objectives are for this project?
+- What are some concerns you have for this project?
+- What would you like to see from the project?
+- Have you had experience with similar software? 
+* What was the experience like? 
+* Where did it help you? 
+* Where did it lack (if at all)?
+
 
 ### Amos Bloomberg
 
