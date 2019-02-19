@@ -28,10 +28,12 @@ These are the questions we used to guide our conversations with stakeholders:
 
 ### Amos Bloomberg
 **Looking for Places**
+
 Professor Bloomberg does not really need to look around for lunch, since he brings food from home. In the rare instances he does need to find something, he looks
 around the area for food and sometimes asks his friends and colleagues for recommendations. He also sometimes consults Yelp.
 
 **Restaurant Criteria**
+
 The following are criteria that Professor Bloomberg places emphasis on when searching for restaurants:
 - Word of mouth; first hand accounts from friends and colleagues
 - How healthy the food is
@@ -39,6 +41,7 @@ The following are criteria that Professor Bloomberg places emphasis on when sear
 	* For example, if he is with his children, is the restaurant child-friendly?
 
 **Experience with Similar Softwares**
+
 Professor Bloomberg has used apps like Yelp in the past and they are useful in the sense that they provide several options given the user's location. They also
 have a large user base, so restaurants have reviews that he can browse through. However, Professor Bloomberg does not really like to consult apps like Yelp because 
 they give him more options than he knows what to do with and the reviews may or may not be helpful. In this sense, finding a place to eat actually becomes a harder 
@@ -48,11 +51,13 @@ In addition, Professor Bloomberg created a similar app in the past. This app too
 Since working with databases was harder back in those days, there was not much one could really do with a web app, but now there are more capabilities.
 
 **Advice**
+
 Professor Bloomberg's advice to us is to basically consider what the **core functionality** of the web app will be. Once we have that down, then we can start to
 plan out the other features. In addition, he advised us to consider Yelp as a competitor and create something that is faster and more direct, potentially even
 making the decision for the user. 
 
 **Technology Recommendations**
+
 For our project's purposes, Professor Bloomberg recommends using a MERN Stack to develop it.
 - **M**ongoDB for the database
 - **E**xpressJS for the backend
