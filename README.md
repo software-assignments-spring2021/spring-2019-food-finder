@@ -17,4 +17,4 @@ a group of Computer Science students attempting to do what software developers d
 Coming Soon!
 
 ### Check out some other links
-[Food Finder Requirements](https://github.com/nyu-software-engineering/food-finder/blob/master/CONTRIBUTING.md)
+[Food Finder Requirements](https://github.com/nyu-software-engineering/food-finder/blob/master/REQUIREMENTS.md)
