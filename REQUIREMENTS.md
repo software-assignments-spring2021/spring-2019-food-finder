@@ -58,6 +58,7 @@ For our project's purposes, Professor Bloomberg recommends using a MERN Stack to
 - **E**xpressJS for the backend
 - **R**eactJS for the user interface
 - **N**odeJS for the backend
+
 These packages are use a lot of JavaScript, but the structure is very widely used, so there is lots of community support available. He emphasizes that if we choose
 this Stack, we need to commit time to learning it and understanding it. Perhaps the objective of Sprint 0 could be to set up our environment. 
 
