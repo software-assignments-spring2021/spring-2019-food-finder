@@ -68,6 +68,23 @@ These packages are use a lot of JavaScript, but the structure is very widely use
 this Stack, we need to commit time to learning it and understanding it. Perhaps the objective of Sprint 0 could be to set up our environment. 
 
 ### Wei-Kai
+**Advice**
+
+Wei-Kai advises us to really consider how we want to differentiate our web app from competitors such as Yelp. In addition, he told us to consider how we want to define 
+the core functionalities such as the statistics, ranking system, and database schema. Here is what we fleshed out during the interview:
+- **Statistics:** the types of restaurants near the user, as well as the types of restaurants in the neighboring areas.
+- **Ranking System:** how a user indicates whether he or she enjoyed a restaurant. This will most likely be a star or number system with an option to comment.
+- **Database Schema:** if we choose to go with static data, we eliminate a lot of difficulty in the project. The schema would have to include a table for restaurants,
+a table for areas, and even a table for the user. 
+
+Wei-Kai believes that the geolocation aspect will probably take us the longest to implement, so he recommends getting the app's other functionalities running first.
+When we do get to the geolocation aspect, he recommends that we use GeoJSON.
+
+**Technology Recommendations**
+Wei-Kai encourages us to try out DevOps tools like Docker to help us streamline the programming process. He also recommends dedicating some time to learning MERN, if
+that is what we wish to use for the project. 
+
+
 
 ## End-User Observations
 We compiled these two personas based on observations of young professionals and college students as they searched for places to eat. Based on what we saw, as well
