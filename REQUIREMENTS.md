@@ -81,6 +81,7 @@ Wei-Kai believes that the geolocation aspect will probably take us the longest t
 When we do get to the geolocation aspect, he recommends that we use GeoJSON.
 
 **Technology Recommendations**
+
 Wei-Kai encourages us to try out DevOps tools like Docker to help us streamline the programming process. He also recommends dedicating some time to learning MERN, if
 that is what we wish to use for the project. 
 
