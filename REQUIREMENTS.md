@@ -4,6 +4,14 @@
 
 ## Non-functional Requirements
 
+- Application should maximize uptime (be online and functional at all times)
+- Variables should represent purpose behind the name
+- Framework:
+	- Front End: React.js
+	- Back End: Express.js and Node.js
+	- Database: MySQL
+
+		
 ## Stakeholder Interviews:
 
 ### Questions
