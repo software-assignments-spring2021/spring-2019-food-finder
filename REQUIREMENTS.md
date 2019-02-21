@@ -135,6 +135,5 @@ Extension: If User logs into his/her account or registers for an account, User c
 - Title: Maintain Web Application
 - Actor: System Administrator
 - Scenario: Administrator will open and test different features of the web application to ensure that everything is working properly. If Administrator encounters a bug/error, Administrator will notify the developers to fix them as soon as possible.
-![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/use-case-2.png "Use Case 2")
 
 ## Domain Modeling
