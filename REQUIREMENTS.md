@@ -132,13 +132,16 @@ as what they told us about their food search process, we created the following s
 - Scenario: User will open Food Finder web application. User will enter his/her location, the maximum mile-radius he/she is willing to travel, price range, and cuisine preference, all presented through the form of drop-down menus. The option to choose “No Preference” for each category also exists. Once preferences are finalized, User enters submit. The web app will display a listing of restaurants that meet all specified criteria. User will select a restaurant from the given list.
 Extension: If User logs into his/her account or registers for an account, User can choose the “Randomize” option. Food Finder will then randomly generate one restaurant based on the previous restaurants that the user has already visited.
 
+![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/Register%20Account.png)
+
 ### Use Case 2: 
 - Title: Maintain Web Application
 - Actor: System Administrator
 - Scenario: Administrator will open and test different features of the web application to ensure that everything is working properly. If Administrator encounters a bug/error, Administrator will notify the developers to fix them as soon as possible.
 
-![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/Register%20Account.png)
-![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/Register%20Account%20(1).png)
 ![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/Register%20Account%20(2).png)
+
+### Aggregation of Use Cases:
+![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/Register%20Account%20(1).png)
 
 ## Domain Modeling
