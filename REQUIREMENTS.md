@@ -20,7 +20,8 @@
 	- Front End: React.js
 	- Back End: Express.js and Node.js
 	- Database: MySQL
-
+- Projection Completion: by end of semester
+- Platforms used must be free-of-charge
 		
 ## Stakeholder Interviews:
 
