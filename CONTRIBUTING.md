@@ -17,6 +17,7 @@ it does not need anything else added to it.
 - All team members should be notified when a branch has been made and when a new feature is being implemented.
 - All team members should be notified when a change has been made to the main branch.
 - All team members should be notified of any pending pull requests.
+- All team members should be in charge of maintaining their task checklists and should notify the Sprint's Product Owner when they are done.
 
 ## Rules of Contribution
 If you have any ideas, please run them by the group. If you would like to make a contribution to the main branch, please adhere to all the rules above. Thank you for reading!
@@ -31,7 +32,7 @@ We had our first meeting on Wednesday, February 20th. We discussed the project's
 We had our second meeting on Thursday, February 21st. We assigned roles for the week and discussed what we need to accomplish by the end of Sprint 0.
 
 Here are the roles for Sprint 0:
-- **Product Manager:** Max
+- **Product Owner:** Max
 - **SCRUM Master:** Tika
 - **Developers:** Andrew, Ashwin, Vinnie
 
