@@ -144,3 +144,4 @@ Extension: If User logs into his/her account or registers for an account, User c
 ![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/Register%20Account%20(1).png)
 
 ## Domain Modeling
+![alt text](https://github.com/nyu-software-engineering/food-finder/blob/master/Images/DomainModel.png)
