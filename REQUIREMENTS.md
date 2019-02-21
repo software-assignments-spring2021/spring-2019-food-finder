@@ -2,6 +2,16 @@
 
 ## Functional Requirements
 
+- Randomization system that prioritizes closest restaurants
+- Provide a list of several randomized places to eat based on user-inputted criteria
+- Provide a list of all restaurants that meet user criteria
+	- User Criteria: Cuisine Type, Price, Distance, Dietary Restriction
+- 1-5 star rating system for restaurants that allows users to leave ratings
+- An account system with a log-in that allows users to track restaurants they have been to
+- Personalized recommendations based on previous restaurants visited
+- Choose between only new restaurants, only restaurants user has been to, or both
+
+
 ## Non-functional Requirements
 
 - Application should maximize uptime (be online and functional at all times)
