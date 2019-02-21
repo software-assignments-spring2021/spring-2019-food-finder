@@ -2,7 +2,7 @@
 
 ## Project Values and Team Norms
 Our values include:
-- Honesty. When we think something could be better, we should let the eachother know.
+- Honesty. When we think something could be better, we should let the each other know.
 - Empathy. Everyone is trying their best and we should respect that.
 - Commitment. We should do our tasks to the best of our ability.
 - Responsibility. When we have been assigned a task, we should own it. 
