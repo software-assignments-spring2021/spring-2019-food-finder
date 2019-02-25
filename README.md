@@ -26,12 +26,13 @@ a group of Computer Science students attempting to do what software developers d
 2. Open up a Terminal/Command Prompt window and make sure that your current directory is "Test"
 3. Type:
 `npx create-react-app my-app`
+4. Then type:
 `cd my-app`
-4. Go to the "src" folder in "my-app" and delete the contents.
-5. Put the contents of "Test/src" into the "my-app/src" folder
-6. Type:
+5. Go to the "src" folder in "my-app" and delete the contents.
+6. Put the contents of "Test/src" into the "my-app/src" folder
+7. Type:
 `npm start`
-7. The window should automatically load on your web browser.
+8. The window should automatically load on your web browser.
 
 ### Check out some other links
 [Food Finder Requirements](https://github.com/nyu-software-engineering/food-finder/blob/master/REQUIREMENTS.md)
