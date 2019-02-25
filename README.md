@@ -14,7 +14,24 @@ a group of Computer Science students attempting to do what software developers d
 [Contributing to Food Finder](https://github.com/nyu-software-engineering/food-finder/blob/master/CONTRIBUTING.md)
 
 ## Building and Testing
-Coming Soon!
+### To Run NodeJS stuff in the Test folder
+1. Make sure you have NodeJS installed on your computer
+2. Open up a Terminal/Command Prompt window and make sure that your current directory is "Test"
+3. Type:
+`node test.js`
+4. Open up a web browser and type: localhost:3000
+
+### To Run ReactJS stuff in the Test/my-app folder
+1. Make sure you have NodeJS AND ReactJS installed on your computer
+2. Open up a Terminal/Command Prompt window and make sure that your current directory is "Test"
+3. Type:
+`npx create-react-app my-app`
+`cd my-app`
+4. Go to the "src" folder in "my-app" and delete the contents.
+5. Put the contents of "Test/src" into the "my-app/src" folder
+6. Type:
+`npm start`
+7. The window should automatically load on your web browser.
 
 ### Check out some other links
 [Food Finder Requirements](https://github.com/nyu-software-engineering/food-finder/blob/master/REQUIREMENTS.md)
