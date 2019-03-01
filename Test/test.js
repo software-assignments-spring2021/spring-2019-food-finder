@@ -21,7 +21,7 @@ fs.readFile('index.html', (err, html) =>
 
 	server.listen(port, hostname, () =>
 	{
-		console.log('Server started on port ' +port);
+		console.log('Server started on port ' + port);
 	});
 });
 
