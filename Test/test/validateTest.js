@@ -31,7 +31,7 @@ describe('#validateText()', function() {
     })
   })
   
-    context('argument is a number below 11105', function() {
+  context('argument is a number below 11105', function() {
     it('should return the argument', function() {
       expect(validateText(10001)).to.be.below(11105)
     })
@@ -44,5 +44,19 @@ describe('#validateText()', function() {
       }).to.throw(TypeError, 'validateText() expects only number input in range 10001 - 11104, no blank input, letters, or special characters.')
     })
   })
-  
+
+  context('argument contains special characters', function() {
+    it('should throw error', function() {
+      expect(function() {
+        validateText('%$#@$%^&*!!')}).to.throw(TypeError, "validateText() expects only number input in range 10001 - 11104, no blank input, letters, or special characters.")
+    })
+  })
+
+  context('argument is null', function() {
+    it('should throw error', function() {
+      expect(function() {
+        validateText(null)}).to.throw(TypeError, "validateText() expects only number input in range 10001 - 11104, no blank input, letters, or special characters.") 
+    })
+  })
+
 })
