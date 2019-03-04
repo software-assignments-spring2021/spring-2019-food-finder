@@ -30,9 +30,25 @@ a group of Computer Science students attempting to do what software developers d
 `cd my-app`
 5. Go to the "src" folder in "my-app" and delete the contents.
 6. Put the contents of "Test/src" into the "my-app/src" folder
-7. Type:
+7. Go back ype:
 `npm start`
 8. The window should automatically load on your web browser.
+
+### Testing 
+
+#### Testing Items in the "Index Testing" Folder
+1. Make sure you have Node, Mocha, and Chai installed
+2. Open up a Terminal/Command Prompt window and type:
+`npm install nyc`
+to download and install the code coverage tool. The package.json file should already be updated with this.
+3. Download the repository and put all the files in "Index Testing" into the "Test" folder.
+4. Open up a Terminal/Command Prompt window and navigate to the "Test" directory
+5. Type in the command:
+`npm test`
+6. The test results as well as the code coverage should run. 
+
+**Notes:** the function being tested is validateText.js and the unit test is test/validateTest.js
+
 
 ### Check out some other links
 [Food Finder Requirements](https://github.com/nyu-software-engineering/food-finder/blob/master/REQUIREMENTS.md)
