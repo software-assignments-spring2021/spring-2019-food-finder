@@ -55,7 +55,8 @@ describe('#validateText()', function() {
   context('argument is null', function() {
     it('should throw error', function() {
       expect(function() {
-        validateText(null)}).to.throw(TypeError, "validateText() expects only number input in range 10001 - 11104, no blank input, letters, or special characters.") 
+        validateText(null)
+      }).to.throw(TypeError, "validateText() expects only number input in range 10001 - 11104, no blank input, letters, or special characters.") 
     })
   })
 
