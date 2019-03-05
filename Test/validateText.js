@@ -1,4 +1,6 @@
 
+// function written by Avantika Khanna (ak5352)
+
 // This function tests if a number entered in is within a certain range
 // and is indeed a number
 

@@ -1,4 +1,6 @@
 
+// function written by Avantika Khanna (ak5352)
+
 var validateText = require('../validateText');
 var expect = require('chai').expect;
 
@@ -45,6 +47,7 @@ describe('#validateText()', function() {
     })
   })
 
+  // contribution made by Vinne Zhang (vz337)                                        
   context('argument contains special characters', function() {
     it('should throw error', function() {
       expect(function() {
@@ -52,12 +55,5 @@ describe('#validateText()', function() {
     })
   })
 
-  context('argument is null', function() {
-    it('should throw error', function() {
-      expect(function() {
-        validateText(null)
-      }).to.throw(TypeError, "validateText() expects only number input in range 10001 - 11104, no blank input, letters, or special characters.") 
-    })
-  })
 
 })
