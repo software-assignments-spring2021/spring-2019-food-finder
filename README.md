@@ -41,7 +41,7 @@ a group of Computer Science students attempting to do what software developers d
 2. Open up a Terminal/Command Prompt window and type:
 `npm install nyc`
 to download and install the code coverage tool. The package.json file should already be updated with this.
-3. Download the repository and put all the files in "Index Testing" into the "Test" folder.
+3. Download the repository and make sure the "test" folder as well as the validateText.js files are directly in the "Test" folder.
 4. Open up a Terminal/Command Prompt window and navigate to the "Test" directory
 5. Type in the command:
 `npm test`
