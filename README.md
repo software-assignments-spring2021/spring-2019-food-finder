@@ -36,7 +36,7 @@ a group of Computer Science students attempting to do what software developers d
 
 ### Testing 
 
-#### Testing Items in the "Index Testing" Folder
+#### Testing Items in the "Test" Folder
 1. Make sure you have Node, Mocha, and Chai installed
 2. Open up a Terminal/Command Prompt window and type:
 `npm install nyc`
