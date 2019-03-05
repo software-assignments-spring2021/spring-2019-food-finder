@@ -5,7 +5,7 @@ module.exports = function()
   var args = Array.prototype.slice.call(arguments);
   
   // Throw error if arguments contain non-character values
-	if (!/[^a-z]/i.test(args))
+	if (!/^[a-z]/i.test(args))
 		{
 		throw new TypeError('maxTestFunction() expects only letter inputs, no blank input, numbers, or special characters.')
 		}
