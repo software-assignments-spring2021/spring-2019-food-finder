@@ -12,5 +12,5 @@ module.exports = function()
 
 	return args.reduce(function(a) {
 		return a
-	}, italian , french, turkish, russian);
+	}, "italian" , "french", "turkish", "russian");
 }
