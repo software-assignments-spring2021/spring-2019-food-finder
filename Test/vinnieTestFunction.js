@@ -10,5 +10,4 @@ module.exports = function()
       throw new TypeError('vinnieTestFunction() expects only number inputs, no blank input, letters, or special characters.')
     }
 
-
 }
