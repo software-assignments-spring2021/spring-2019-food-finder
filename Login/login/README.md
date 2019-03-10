@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+To run npm start, you may need to first install a transition group dependency.
+To do that, in your terminal window, type "npm i react-transition-group"
+
 In the project directory, you can run:
 
 ### `npm start`
