@@ -4,7 +4,7 @@ node_js:
     - "node"
     - "8"
 install:
-    - cd /Login/login && npm install
+    - cd Login/login && npm install
 script:
     - npm test
 notifications:
