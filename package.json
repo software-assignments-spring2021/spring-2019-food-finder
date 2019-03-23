@@ -7,7 +7,9 @@
     "test": "nyc mocha",
     "installit": "npm install && cd test_2 && npx create-react-app the-app",
 	"setuppc": "cd test_2 && cd the-app && rmdir /Q /S src && mkdir src",
-	"startit": "cd test_2 && xcopy my-app\\src the-app\\src /e",
+	"setupunix": "cd test_2 && cd the-app && rm -rf src && mkdir src",
+	"startitpc": "cd test_2 && xcopy my-app\\src the-app\\src /e",
+	"startitunix": "cd test_2 && xcopy my-app\\src the-app\\src /e",
 	"runit": "cd test_2 && cd the-app && npm start"
   },
   "author": "Tika",
