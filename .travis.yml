@@ -4,8 +4,10 @@ node_js:
     - "node"
     - "10.15.1"
 install:
-    - npm run
+    - npm run installit
+    - npm run setuppc
 script:
-    - npm start
+    - npm run startit
+    - npm run runit
 notifications:
     slack: nyu-agile-software:4Ll9V7RPK8fkqf2dGDvWiEGt
