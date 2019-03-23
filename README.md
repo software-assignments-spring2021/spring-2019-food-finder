@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/nyu-software-engineering/food-finder.svg?branch=master)](https://travis-ci.com/nyu-software-engineering/food-finder)
+
 # Food Finder
 
 ## Project Description
