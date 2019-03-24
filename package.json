@@ -1,0 +1,25 @@
+{
+  "name": "Food-Finder",
+  "version": "1.0.0",
+  "description": "An app to help people decide where to eat",
+  "main": "test.js",
+  "scripts": {
+	"test": "nyc mocha",
+    "testit": "npm install nyc && npm install --save-dev mocha && npm install --save-dev chai && cd test_2 && nyc mocha",
+    "installit": "npm install && cd test_2 && npx create-react-app the-app",
+	"setuppc": "cd test_2 && cd the-app && rmdir /Q /S src && mkdir src",
+	"setupunix": "cd test_2 && cd the-app && rm -rf src",
+	"startitpc": "cd test_2 && xcopy my-app\\src the-app\\src /e",
+	"startitunix": "cd test_2 && cp -R my-app/src the-app",
+	"runit": "cd test_2 && cd the-app && npm start"
+  },
+  "author": "Tika",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  },
+  "dependencies": {
+    "nyc": "^13.3.0"
+  }
+}

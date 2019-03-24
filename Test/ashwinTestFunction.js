@@ -6,7 +6,7 @@ module.exports = function()
 	//Throw error if arguments contain letters other than C
 		if(!/^Cc/i.test(args))
 			{
-			throw new TypeError('ashwinTestFunction() expects only the letter C')}
+			throw new TypeError('ashwinTestFunction() expects only the letters C or c')}
 		return args.reduce(function(a){
 			return a
 		}, "Chinese", "chinese", "Catalan", "Costa Rican");

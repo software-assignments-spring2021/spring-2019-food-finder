@@ -19,7 +19,7 @@ describe('#ashwinTestFunction()', function(){
 		})
 	})
 
-	context('argument contains special characters,' function() {
+	context('argument contains special characters', function() {
 		it('should throw error', function() { 
 			expect(function() {
 				ashwinValidateText('*&^%$#$%^')
