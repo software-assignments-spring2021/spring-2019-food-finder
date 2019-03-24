@@ -39,7 +39,7 @@ a group of Computer Science students attempting to do what software developers d
 ### Testing 
 
 #### Testing Items in the "Test" Folder
-1. Make sure you have Node, Mocha, and Chai installed.
+1. Make sure you have Node, Mocha, and Chai installed
 2. Open up a Terminal/Command Prompt window and type:
 `npm install nyc`
 to download and install the code coverage tool. The package.json file should already be updated with this.
