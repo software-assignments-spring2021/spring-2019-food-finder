@@ -4,7 +4,8 @@
   "description": "An app to help people decide where to eat",
   "main": "test.js",
   "scripts": {
-    "test": "nyc mocha",
+	"test": "nyc mocha",
+    "testit": "npm install nyc && cd test_2 && nyc mocha",
     "installit": "npm install && cd test_2 && npx create-react-app the-app",
 	"setuppc": "cd test_2 && cd the-app && rmdir /Q /S src && mkdir src",
 	"setupunix": "cd test_2 && cd the-app && rm -rf src",
