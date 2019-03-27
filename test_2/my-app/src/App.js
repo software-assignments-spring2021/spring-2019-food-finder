@@ -5,7 +5,7 @@ import Form from "./Form";
 
 class App extends Component {
   onSubmit = fields => {
-    console.log("Location is: ", fields.location);
+    console.log("Location is: ", ields.location);
     console.log("Food Preference is: ", fields.foodPreference);
     console.log("Walking time is: ", fields.walkingTime);
   };

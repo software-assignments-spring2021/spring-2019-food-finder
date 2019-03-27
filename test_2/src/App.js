@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { Fragment, Component } from "react";
 import "./App.css";
-import Form from "./Form";
+import { Form } from "./HomepageForm/index";
+import { Header, Footer } from "./Layouts";
 
 class App extends Component {
   onSubmit = fields => {
@@ -12,9 +12,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Form onSubmit={fields => this.onSubmit(fields)} />
-      </div>
+      <Fragment>
+        <Header />
+        <div className="App">
+          <Form onSubmit={fields => this.onSubmit(fields)} />
+        </div>
+        <Footer />
+      </Fragment>
     );
   }
 }
