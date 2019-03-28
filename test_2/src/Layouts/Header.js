@@ -6,9 +6,7 @@ import {
   Toolbar,
   Typography,
   Button,
-  IconButton,
-  Menu,
-  MenuItem
+  IconButton
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -38,7 +36,7 @@ function ButtonAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography variant="h4" color="inherit" className={classes.grow}>
             Rouxlette
           </Typography>
           <Button color="inherit">Login</Button>
