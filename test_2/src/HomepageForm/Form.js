@@ -9,7 +9,9 @@ import {
   MenuItem,
   FormHelperText,
   FormControl,
-  MuiThemeProvider
+  MuiThemeProvider,
+  Paper,
+  Grid
 } from "@material-ui/core";
 
 const styles = theme => ({
@@ -23,6 +25,9 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2
+  },
+  paper: {
+    padding: 50
   }
 });
 
@@ -47,64 +52,84 @@ class Form extends React.Component {
     const { classes } = this.props;
     return (
       <MuiThemeProvider>
-        <form className={classes.root}>
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="location">Location</InputLabel>
-            <Select value={this.state.location} onChange={e => this.change(e)}>
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="Location 1">Location 1</MenuItem>
-              <MenuItem value="Location 2">Location 2</MenuItem>
-            </Select>
-          </FormControl>
-          <br />
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="foodPreference">Food Preference</InputLabel>
-            <Select
-              name="foodPreference"
-              margin="normal"
-              value={this.state.foodPreference}
-              onChange={e => this.change(e)}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="No Preference">No Preference</MenuItem>
-              <MenuItem value="American">American</MenuItem>
-              <MenuItem value="Bakery">Bakery</MenuItem>
-              <MenuItem value="Chinese">Chinese</MenuItem>
-              <MenuItem value="Thai">Thai</MenuItem>
-            </Select>
-          </FormControl>
-          <br />
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="walkingTime">Walking Time</InputLabel>
-            <Select
-              name="walkingTime"
-              margin="normal"
-              value={this.state.walkingTime}
-              onChange={e => this.change(e)}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="<5">Under 5 Minutes</MenuItem>
-              <MenuItem value="5-10">5-10 Minutes</MenuItem>
-              <MenuItem value="10-15">10-15 Minutes</MenuItem>
-              <MenuItem value="15-20">15-20 Minutes</MenuItem>
-              <MenuItem value=">20">Over 20 Minutes</MenuItem>
-            </Select>
-          </FormControl>
-          <br />
-          <Button
-            onClick={() => this.onSubmit()}
-            color="inherit"
-            margin="normal"
+        <Paper className={classes.paper}>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            spacing={24}
           >
-            Submit
-          </Button>
-        </form>
+            <form className={classes.root}>
+              <Grid item xs={12}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="location">Location</InputLabel>
+                  <Select
+                    name="location"
+                    margin="normal"
+                    value={this.state.location}
+                    onChange={e => this.change(e)}
+                  >
+                    <MenuItem value="No Preference">No Preference</MenuItem>
+                    <MenuItem value="Location 1">Location 1</MenuItem>
+                    <MenuItem value="Location 2">Location 2</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="foodPreference">
+                    Food Preference
+                  </InputLabel>
+                  <Select
+                    name="foodPreference"
+                    margin="normal"
+                    value={this.state.foodPreference}
+                    onChange={e => this.change(e)}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="No Preference">No Preference</MenuItem>
+                    <MenuItem value="American">American</MenuItem>
+                    <MenuItem value="Bakery">Bakery</MenuItem>
+                    <MenuItem value="Chinese">Chinese</MenuItem>
+                    <MenuItem value="Thai">Thai</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="walkingTime">Walking Time</InputLabel>
+                  <Select
+                    name="walkingTime"
+                    margin="normal"
+                    value={this.state.walkingTime}
+                    onChange={e => this.change(e)}
+                  >
+                    <MenuItem value="No Preference">No Preference</MenuItem>
+                    <MenuItem value="<5">Under 5 Minutes</MenuItem>
+                    <MenuItem value="5-10">5-10 Minutes</MenuItem>
+                    <MenuItem value="10-15">10-15 Minutes</MenuItem>
+                    <MenuItem value="15-20">15-20 Minutes</MenuItem>
+                    <MenuItem value=">20">Over 20 Minutes</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  onClick={() => this.onSubmit()}
+                  color="primary"
+                  margin="large"
+                  size="large"
+                  variant="raised"
+                >
+                  Submit
+                </Button>
+              </Grid>
+            </form>
+          </Grid>
+        </Paper>
       </MuiThemeProvider>
     );
   }
