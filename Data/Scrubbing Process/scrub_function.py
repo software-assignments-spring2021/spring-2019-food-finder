@@ -72,7 +72,7 @@ def make_json(f, target):
             arr[1] = "\"borough\": \"" + arr[1] + "\", "
             arr[2] = "\"building_number\": " + arr[2] + ", "
             arr[3] = "\"address\": \"" + arr[3] + "\", "
-            arr[4] = "\"zipcode\": " + arr[4] + ", "
+            arr[4] = "\"zipcode\": \"" + arr[4] + "\", "
             arr[5] = "\"phone_number\": \"" + arr[5] + "\", "
             arr[6] = "\"cuisine_type\": \"" + arr[6] + "\", "
             arr[7] = "\"grade\": \"" + arr[7] + "\"}"
