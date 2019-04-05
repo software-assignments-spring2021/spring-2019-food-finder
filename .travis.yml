@@ -5,8 +5,7 @@ node_js:
     - "node"
     - "10.15.1"
 install:
-    - npm run installit
-    - npm run setupunix
+    - npm install
 script:
     - npm run testit
 notifications:
