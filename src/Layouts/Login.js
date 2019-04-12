@@ -182,7 +182,7 @@ class RegisterBox extends React.Component {
     this.clearValidationErr("password");
 
     this.setState({pwdState: "weak"});
-    if (e.target.value.length > 8) {
+    if (e.target.value.length > 8 && e.target.value.length < 12) {
       this.setState({pwdState: "medium"});
     } else if (e.target.value.length > 12) {
       this.setState({pwdState: "strong"});
