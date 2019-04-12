@@ -69,8 +69,12 @@ class LoginBox extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      username: "",
+      password: "",
+    };
   }
+  
 
   submitLogin(e) {}
 
@@ -92,7 +96,9 @@ class LoginBox extends React.Component {
               type="text" 
               name="username" 
               className="login-input" 
-              placeholder="Username"/>
+              placeholder="Username"
+              value={this.state.value}
+              onChange={this.handleChange}/>
           </div>
 
           <div className="input-group">
@@ -182,11 +188,6 @@ class RegisterBox extends React.Component {
       this.setState({pwdState: "strong"});
     }
 
-  }
-
-
-  openPopup(e) {
-    console.log("Hello world!");
   }
 
   submitRegister(e) {
@@ -299,8 +300,7 @@ class RegisterBox extends React.Component {
           <button
             type="button"
             className="login-btn"
-            onMouseOver={this.openPopup.bind(this)}
-            onClick={this.openPopup.bind(this)}>
+            onClick={this.submitRegister.bind(this)}>
             Register
           </button>
 
