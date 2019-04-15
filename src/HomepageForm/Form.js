@@ -67,6 +67,16 @@ class Form extends React.Component {
                     value={this.state.location}
                     className={classes.formControl}
                     onChange={this.handleChange("location")}
+                    error={
+                      this.state.location.length !== 5 &&
+                      this.state.location.length !== 0
+                    }
+                    helperText={
+                      this.state.location.length !== 5 &&
+                      this.state.location.length !== 0
+                        ? "Not valid"
+                        : ""
+                    }
                     margin="normal"
                   />
                 </FormControl>
