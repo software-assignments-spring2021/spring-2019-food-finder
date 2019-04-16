@@ -1,10 +1,10 @@
-import React from "react";
-import axios from "axios";
+//import React from "react";
+//import axios from "axios";
 
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-
+const body_parser = require("body-parser");
 const PORT = (5000);
 const app = express();
 let db;
@@ -13,13 +13,14 @@ const router = express.Router();
 // this is the first test route
 app.get("/test", function(request, response){
 
+    const location = request.query.location;
+
     // our query!
     const query = {
-
-        // "name": "THINK COFFEE",
-        // "borough":"MANHATTAN",
-        // "cuisine_type":"Cafe/Coffee/Tea",
-        // "zipcode":  "10003"
+        "name": "THINK COFFEE",
+        "borough":"MANHATTAN",
+        "cuisine_type":"Cafe/Coffee/Tea",
+        "zipcode":  "10003"
     }
 
     // where we query the user inputs in db
