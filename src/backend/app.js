@@ -23,8 +23,6 @@ app.get("/test", function(request, response){
         // "borough":"MANHATTAN",
         // "cuisine_type":"Cafe/Coffee/Tea",
         // "zipcode":  "10003"
-
-        
     }
 
     // where we query the user inputs in db

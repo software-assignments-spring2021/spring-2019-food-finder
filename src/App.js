@@ -3,6 +3,7 @@ import "./App.css";
 import { Form } from "./HomepageForm/index";
 import { Header, Footer } from "./Layouts";
 import LR from './Layouts/Login';
+import axios from "axios";
 
 class App extends Component {
   constructor(props)
@@ -15,8 +16,33 @@ class App extends Component {
   }
   onSubmit = fields => {
     console.log("Location is: ", fields.location);
-    console.log("Food Preference is: ", fields.foodPreference);
     console.log("Walking time is: ", fields.walkingTime);
+    console.log("Food Preference is: ", fields.foodPreference);
+
+    // IMPLEMENT SEND REQUEST
+    // fetch("http://localhost:3000")
+    //   .then((success) => {
+    //     console.log(Form.state);
+    //     return Form.state;
+    //   }).catch((err) => {
+    //     console.log("Error wasn't handled.");
+    //   });
+
+    axios.get('/test', {
+      params: {
+        // zipcode: fields.location,
+        // cuisine_type: fields.foodPreference
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    }); 
   };
 
   openLogin = () => {
