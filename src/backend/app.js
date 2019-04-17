@@ -8,19 +8,23 @@ const body_parser = require("body-parser");
 const PORT = (5000);
 const app = express();
 let db;
-const router = express.Router();
+//const router = express.Router();
 
 // this is the first test route
 app.get("/test", function(request, response){
 
-    const location = request.query.location;
+    //const location = request.query.location;
+
+    console.log(request);
 
     // our query!
     const query = {
-        "name": "THINK COFFEE",
-        "borough":"MANHATTAN",
-        "cuisine_type":"Cafe/Coffee/Tea",
-        "zipcode":  "10003"
+        // "name": "THINK COFFEE",
+        // "borough":"MANHATTAN",
+        // "cuisine_type":"Cafe/Coffee/Tea",
+        // "zipcode":  "10003"
+
+        
     }
 
     // where we query the user inputs in db
@@ -63,12 +67,12 @@ mongoose.connect(url, function(error, database)
 
 // this is our get method
 // this method fetches all available data in our database
-router.get("/test", (req, res) => {
-    Data.find((err, data) => {
-      if (err) return res.json({ success: false, error: err });
-      return res.json({ success: true, data: data });
-    });
-  });
+// router.get("/test", (req, res) => {
+//     Data.find((err, data) => {
+//       if (err) return res.json({ success: false, error: err });
+//       return res.json({ success: true, data: data });
+//     });
+//   });
 
 // componentDidMount() {
 //     axios.get('/test/')
