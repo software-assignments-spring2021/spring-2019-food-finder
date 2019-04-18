@@ -2,6 +2,7 @@ import React from "react";
 import reactDOM from "react-dom";
 import './Login.css';
 
+
 import TransitionGroup from "react-transition-group";
 
 import FadeTransition from "./transitions/fadeTransition";
@@ -70,15 +71,35 @@ class LoginBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+	  username: "",
       password: "",
+	  
     };
   }
-  
+
+  validateForm() {
+    return (
+      this.state.username.length > 0 &&
+      this.state.password.length > 0
+    );
+  }
+
 
   submitLogin(e) {}
 
+  
+  
+  handleUsernameChange = evt => {
+    this.setState({ username: evt.target.value });
+  };
+
+  handlePasswordChange = evt => {
+    this.setState({ password: evt.target.value });
+  };
+
   render() {
+    const { username, password } = this.state;
+    const isEnabled1 = username.length > 0 && password.length > 0;
 
     return (
 
@@ -97,8 +118,9 @@ class LoginBox extends React.Component {
               name="username" 
               className="login-input" 
               placeholder="Username"
-              value={this.state.value}
-              onChange={this.handleChange}/>
+              value={this.state.username}
+              onChange={this.handleUsernameChange}
+              />
           </div>
 
           <div className="input-group">
@@ -107,13 +129,17 @@ class LoginBox extends React.Component {
               type="password"
               name="password"
               className="login-input"
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
               placeholder="Password"/>
           </div>
 
           <button
             type="button"
-            className="login-btn"
-            onClick={this.submitLogin.bind(this)}>
+            //className="login-btn"
+            onClick={this.submitLogin.bind(this)}
+			      disabled={!isEnabled1}>
+
             Login
           </button>
 
@@ -138,11 +164,23 @@ class RegisterBox extends React.Component {
       username: "",
       email: "",
       password: "",
+      confirmPassword: "",
+      newUser: null,
       errors: [],
       pwdState: null
     };
-  }
 
+  }
+	validateFormRegister() {
+    return (
+      this.state.email.length > 0 &&
+      this.state.username.length > 0 &&
+      /\d/.test(this.state.username) === false &&
+      this.state.password.length > 0 &&
+      this.state.password === this.state.confirmPassword
+    );
+  }
+	
   showValidationErr(elm, msg) {
 
     this.setState((prevState) => ({
@@ -207,6 +245,9 @@ class RegisterBox extends React.Component {
   }
 
   render() {
+    const { username, email, password } = this.state;
+
+    const isEnabled = email.length > 0 && password.length > 0;
 
     let usernameErr = null,
       passwordErr = null,
@@ -294,13 +335,27 @@ class RegisterBox extends React.Component {
               <div className={"pwd pwd-strong " + (pwdStrong ? "show" : "")}></div>
             
           </div>}
+          <div className="input-group">
+            
+            <label htmlFor="confirmPassword">Email</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              className="login-input"
+              placeholder="ConfirmPassword"
+              onChange={this.onPasswordChange.bind(this)}/>
+            
+            <small className="danger-error">{emailErr ? emailErr : ""}</small>
+          
+          </div>
 
         </div>
 
           <button
             type="button"
             className="login-btn"
-            onClick={this.submitRegister.bind(this)}>
+            onClick={this.submitRegister.bind(this)}
+			      disabled={!isEnabled}>
             Register
           </button>
 
