@@ -175,7 +175,6 @@ class RegisterBox extends React.Component {
     return (
       this.state.email.length > 0 &&
       this.state.username.length > 0 &&
-      /\d/.test(this.state.username) === false &&
       this.state.password.length > 0 &&
       this.state.password === this.state.confirmPassword
     );
@@ -214,6 +213,10 @@ class RegisterBox extends React.Component {
     this.setState({email: e.target.value});
     this.clearValidationErr("email");
   }
+  onConfirmPasswordChange(e) {
+    this.setState({confirmPassword: e.target.value});
+    this.clearValidationErr("confirmPassword");
+  }
 
   onPasswordChange(e) {
     this.setState({password: e.target.value});
@@ -245,9 +248,8 @@ class RegisterBox extends React.Component {
   }
 
   render() {
-    const { username, email, password } = this.state;
-
-    const isEnabled = email.length > 0 && password.length > 0;
+    const { username, email, password, confirmPassword } = this.state;
+    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && email.includes("@");
 
     let usernameErr = null,
       passwordErr = null,
@@ -298,6 +300,7 @@ class RegisterBox extends React.Component {
               name="username"
               className="login-input"
               placeholder="Username"
+              value={this.state.username}
               onChange={this.onUsernameChange.bind(this)}/>
             <small className="danger-error">{usernameErr ? usernameErr : ""}</small>
           
@@ -311,6 +314,7 @@ class RegisterBox extends React.Component {
               name="email"
               className="login-input"
               placeholder="Email"
+              value={this.state.email}
               onChange={this.onEmailChange.bind(this)}/>
             
             <small className="danger-error">{emailErr ? emailErr : ""}</small>
@@ -325,6 +329,7 @@ class RegisterBox extends React.Component {
               name="password"
               className="login-input"
               placeholder="Password"
+              value={this.state.password}
               onChange={this.onPasswordChange.bind(this)}/>
             <small className="danger-error">{passwordErr ? passwordErr : ""}</small>
 
@@ -342,8 +347,9 @@ class RegisterBox extends React.Component {
               type="password"
               name="confirmPassword"
               className="login-input"
-              placeholder="ConfirmPassword"
-              onChange={this.onPasswordChange.bind(this)}/>
+              placeholder="Confirm Password"
+              value={this.state.confirmPassword}
+              onChange={this.onConfirmPasswordChange.bind(this)}/>
             
             <small className="danger-error">{emailErr ? emailErr : ""}</small>
           
@@ -353,7 +359,7 @@ class RegisterBox extends React.Component {
 
           <button
             type="button"
-            className="login-btn"
+            //className="login-btn"
             onClick={this.submitRegister.bind(this)}
 			      disabled={!isEnabled}>
             Register
