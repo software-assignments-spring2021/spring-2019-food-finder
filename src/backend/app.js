@@ -8,25 +8,24 @@ const body_parser = require("body-parser");
 const PORT = (5000);
 const app = express();
 let db;
-//const router = express.Router();
+const router = express.Router();
+//const state = require('./Form.js');
 
 // this is the first test route
 app.get("/test", function(request, response){
 
-    //const location = request.query.location;
-
-    console.log(request);
+    const location = request.query.location;
 
     // our query!
     const query = {
-        // "name": "THINK COFFEE",
-        // "borough":"MANHATTAN",
-        // "cuisine_type":"Cafe/Coffee/Tea",
-        // "zipcode":  "10003"
-    }
-
+        zipcode: request.query.location,
+        cuisine_type: request.query.foodPreference,
+        //walkingTime: request.query.walkingTime,  
+    
+    };
+    console.log(query);
     // where we query the user inputs in db
-    db.collection("restaurantData").find(query).toArray(function(err, docs)
+    db.collection("Data").find(query).toArray(function(err, docs)
     {
         if (err)
         {
@@ -34,6 +33,8 @@ app.get("/test", function(request, response){
         }
         else{ // if no error is encountered
             // response object that is sending back the db info
+        console.log("Server encountered no errors");
+        console.log(docs);
             response.status(200).json(docs);
         }
     });
@@ -44,7 +45,6 @@ app.get("/test", function(request, response){
         zipcode: 10003,
         cuisine: "American"
     }
-
     // this is where we make a request to the database to retrieve data
      response.status(200).json(testObject);
      */
@@ -72,6 +72,7 @@ mongoose.connect(url, function(error, database)
 //     });
 //   });
 
+  
 // componentDidMount() {
 //     axios.get('/test/')
 //         .then(res => {
