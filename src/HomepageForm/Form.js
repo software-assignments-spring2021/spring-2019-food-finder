@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import {
   InputLabel,
@@ -40,7 +41,13 @@ class Form extends React.Component {
 
   onSubmit = e => {
     this.props.onSubmit(this.state);
-  };
+    axios.get('/test', { params: this.state })
+      .then(res => {
+      const query = res.data;
+      this.setState({ query });
+    })
+  }
+  
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
@@ -243,7 +250,21 @@ class Form extends React.Component {
       </MuiThemeProvider>
     );
   }
+
+  
+  // //The rough idea of getting the state from Form.js
+  // // to search in the DB
+  // app.get("/test", function(req, res){
+  //     res.sendFile("./backend/state.html");
+  // });
+  
+    
+      
+       
 }
+
+
+
 
 Form.propTypes = {
   classes: PropTypes.object.isRequired
