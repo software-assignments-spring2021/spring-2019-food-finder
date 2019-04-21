@@ -71,7 +71,7 @@ class LoginBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-	  username: "",
+	  email: "",
       password: "",
 	  
     };
@@ -79,7 +79,7 @@ class LoginBox extends React.Component {
 
   validateForm() {
     return (
-      this.state.username.length > 0 &&
+      this.state.email.length > 0 &&
       this.state.password.length > 0
     );
   }
@@ -89,8 +89,8 @@ class LoginBox extends React.Component {
 
   
   
-  handleUsernameChange = evt => {
-    this.setState({ username: evt.target.value });
+  handleEmailChange = evt => {
+    this.setState({ email: evt.target.value });
   };
 
   handlePasswordChange = evt => {
@@ -98,9 +98,8 @@ class LoginBox extends React.Component {
   };
 
   render() {
-    const { username, password } = this.state;
-    const isEnabled1 = username.length > 0 && password.length > 0;
-
+    const { email, password } = this.state;
+    const isEnabled1 = email.length > 0 && password.length > 0 && validateEmail(email);
     return (
 
       <div className="inner-container">
@@ -112,15 +111,17 @@ class LoginBox extends React.Component {
         <div className="box">
 
           <div className="input-group">
-            <label htmlFor="username">Username</label>
-            <input 
-              type="text" 
-              name="username" 
-              className="login-input" 
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.handleUsernameChange}
-              />
+            
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              className="login-input"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.handleEmailChange.bind(this)}/>
+            
+          
           </div>
 
           <div className="input-group">
@@ -249,7 +250,7 @@ class RegisterBox extends React.Component {
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
-    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && email.includes("@");
+    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && validateEmail(email);
 
     let usernameErr = null,
       passwordErr = null,
@@ -342,7 +343,7 @@ class RegisterBox extends React.Component {
           </div>}
           <div className="input-group">
             
-            <label htmlFor="confirmPassword">Email</label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
               name="confirmPassword"
@@ -374,3 +375,8 @@ class RegisterBox extends React.Component {
 }
 
 export default LR;
+
+function validateEmail(email) {
+    var validity = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return validity.test(String(email).toLowerCase());
+}
