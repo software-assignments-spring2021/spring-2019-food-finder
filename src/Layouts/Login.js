@@ -99,8 +99,7 @@ class LoginBox extends React.Component {
 
   render() {
     const { email, password } = this.state;
-    const isEnabled1 = email.length > 0 && password.length > 0 && email.includes("@") && (email.includes(".com") || email.includes(".edu") || email.includes(".net") || email.includes(".gov") || email.includes(".org")) ;
-
+    const isEnabled1 = email.length > 0 && password.length > 0 && validateEmail(email);
     return (
 
       <div className="inner-container">
@@ -251,7 +250,7 @@ class RegisterBox extends React.Component {
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
-    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && email.includes("@") && (email.includes(".com") || email.includes(".edu") || email.includes(".net") || email.includes(".gov") || email.includes(".org")) ;
+    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && validateEmail(email);
 
     let usernameErr = null,
       passwordErr = null,
@@ -376,3 +375,8 @@ class RegisterBox extends React.Component {
 }
 
 export default LR;
+
+function validateEmail(email) {
+    var validity = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return validity.test(String(email).toLowerCase());
+}
