@@ -249,7 +249,7 @@ class RegisterBox extends React.Component {
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
-    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && email.includes("@");
+    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && email.includes("@") && (email.includes(".com") || email.includes(".edu") || email.includes(".net") || email.includes(".gov") || email.includes(".org")) ;
 
     let usernameErr = null,
       passwordErr = null,
