@@ -299,7 +299,7 @@ class Form extends React.Component {
             </Grid>
             <Grid item xs={12}>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="walkingTime">Walking Time</InputLabel>
+                <InputLabel htmlFor="walkingTime">Your Location Scope</InputLabel>
                 <Select
                   name="walkingTime"
                   margin="normal"
@@ -310,6 +310,11 @@ class Form extends React.Component {
                   // for the below option, search for restaurants in the user's
                   zipcode area
                   <MenuItem value="Nearby">Nearby</MenuItem>
+				  <MenuItem value="BRONX">The Bronx</MenuItem>
+				  <MenuItem value="BROOKLYN">Brooklyn</MenuItem>
+				  <MenuItem value="MANHATTAN">Manhattan</MenuItem>
+				  <MenuItem value="QUEENS">Queens</MenuItem>
+				  <MenuItem value="STATEN ISLAND">Staten Island</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
