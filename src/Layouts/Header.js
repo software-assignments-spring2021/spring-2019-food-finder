@@ -9,6 +9,7 @@ import {
   IconButton
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import LR from "./Login";
 
 const styles = {
   root: {
@@ -23,31 +24,50 @@ const styles = {
   }
 };
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h4" color="inherit" className={classes.grow}>
-            Rouxlette
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.openLogin = this.openLogin.bind(this);
+    this.state = {
+      LR: null
+    };
+  }
+
+  openLogin = () => {
+    if (this.state.LR === null) {
+      this.setState({ LR: <LR /> });
+    } else {
+      this.setState({ LR: null });
+    }
+  };
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h4" color="inherit" className={classes.grow}>
+              Rouxlette
+            </Typography>
+            <Button color="inherit" id="loginButton" onClick={this.openLogin}>
+              Login
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
-ButtonAppBar.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(Header);

@@ -2,11 +2,11 @@ import React, { Fragment, Component } from "react";
 import "./App.css";
 import { Form } from "./HomepageForm/index";
 import { Header, Footer } from "./Layouts";
-import LR from './Layouts/Login';
+import LR from "./Layouts/Login";
+import { Button } from "@material-ui/core";
 
 class App extends Component {
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.openLogin = this.openLogin.bind(this);
     this.state = {
@@ -20,19 +20,20 @@ class App extends Component {
   };
 
   openLogin = () => {
-    
-    if (this.state.LR === null){
-      this.setState({LR: (<LR/>)});
+    if (this.state.LR === null) {
+      this.setState({ LR: <LR /> });
     } else {
-      this.setState({LR: null});
+      this.setState({ LR: null });
     }
-  }
+  };
 
   render() {
     return (
       <Fragment>
         <Header />
-        <button id="loginButton" onClick={this.openLogin}>LOGIN</button>
+        <Button id="loginButton" onClick={this.openLogin}>
+          LOGIN
+        </Button>
         <div className="App">
           <Form onSubmit={fields => this.onSubmit(fields)} />
         </div>

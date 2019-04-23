@@ -1,14 +1,12 @@
 import React from "react";
 import reactDOM from "react-dom";
-import './Login.css';
-
+import "./Login.css";
 
 import TransitionGroup from "react-transition-group";
 
 import FadeTransition from "./transitions/fadeTransition";
 
 class LR extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -18,77 +16,69 @@ class LR extends React.Component {
   }
 
   showLoginBox() {
-    this.setState({isLoginOpen: true, isRegisterOpen: false});
+    this.setState({ isLoginOpen: true, isRegisterOpen: false });
   }
 
   showRegisterBox() {
-    this.setState({isRegisterOpen: true, isLoginOpen: false});
+    this.setState({ isRegisterOpen: true, isLoginOpen: false });
   }
 
   render() {
-
     return (
-
       <div className="root-container">
-
         <div className="box-controller">
-          
-          <div className={"controller " + (this.state.isLoginOpen ? "selected-controller" : "")}
-            onClick={this.showLoginBox.bind(this)}>
+          <div
+            className={
+              "controller " +
+              (this.state.isLoginOpen ? "selected-controller" : "")
+            }
+            onClick={this.showLoginBox.bind(this)}
+          >
             Login
           </div>
 
           <div
-            className={"controller " + (this.state.isRegisterOpen ? "selected-controller" : "")}
-            onClick={this.showRegisterBox.bind(this)}>
+            className={
+              "controller " +
+              (this.state.isRegisterOpen ? "selected-controller" : "")
+            }
+            onClick={this.showRegisterBox.bind(this)}
+          >
             Register
           </div>
-
         </div>
- 
-        <FadeTransition isOpen={this.state.isLoginOpen} duration={0}>   
+
+        <FadeTransition isOpen={this.state.isLoginOpen} duration={0}>
           <div className="box-container">
-            <LoginBox/>
+            <LoginBox />
           </div>
         </FadeTransition>
 
-        <FadeTransition isOpen={this.state.isRegisterOpen} duration={0}>  
+        <FadeTransition isOpen={this.state.isRegisterOpen} duration={0}>
           <div className="box-container">
-            <RegisterBox/>
+            <RegisterBox />
           </div>
         </FadeTransition>
-
       </div>
-      
     );
-
   }
-
 }
 
 class LoginBox extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-	  email: "",
-      password: "",
-	  
+      email: "",
+      password: ""
     };
   }
 
   validateForm() {
-    return (
-      this.state.email.length > 0 &&
-      this.state.password.length > 0
-    );
+    return this.state.email.length > 0 && this.state.password.length > 0;
   }
-
 
   submitLogin(e) {}
 
-  
-  
   handleEmailChange = evt => {
     this.setState({ email: evt.target.value });
   };
@@ -99,19 +89,14 @@ class LoginBox extends React.Component {
 
   render() {
     const { email, password } = this.state;
-    const isEnabled1 = email.length > 0 && password.length > 0 && validateEmail(email);
+    const isEnabled1 =
+      email.length > 0 && password.length > 0 && validateEmail(email);
     return (
-
       <div className="inner-container">
-
-        <div className="header">
-          Login
-        </div>
+        <div className="header">Login</div>
 
         <div className="box">
-
           <div className="input-group">
-            
             <label htmlFor="email">Email</label>
             <input
               type="text"
@@ -119,9 +104,8 @@ class LoginBox extends React.Component {
               className="login-input"
               placeholder="Email"
               value={this.state.email}
-              onChange={this.handleEmailChange.bind(this)}/>
-            
-          
+              onChange={this.handleEmailChange.bind(this)}
+            />
           </div>
 
           <div className="input-group">
@@ -132,33 +116,29 @@ class LoginBox extends React.Component {
               className="login-input"
               value={this.state.password}
               onChange={this.handlePasswordChange}
-              placeholder="Password"/>
+              placeholder="Password"
+            />
           </div>
 
           <button
             type="button"
             //className="login-btn"
             onClick={this.submitLogin.bind(this)}
-			      disabled={!isEnabled1}>
-
+            disabled={!isEnabled1}
+          >
             Login
           </button>
-
         </div>
-
       </div>
     );
   }
-
 }
 
-
 function pop(props) {
-  return
+  return;
 }
 
 class RegisterBox extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -170,9 +150,8 @@ class RegisterBox extends React.Component {
       errors: [],
       pwdState: null
     };
-
   }
-	validateFormRegister() {
+  validateFormRegister() {
     return (
       this.state.email.length > 0 &&
       this.state.username.length > 0 &&
@@ -180,12 +159,12 @@ class RegisterBox extends React.Component {
       this.state.password === this.state.confirmPassword
     );
   }
-	
-  showValidationErr(elm, msg) {
 
-    this.setState((prevState) => ({
+  showValidationErr(elm, msg) {
+    this.setState(prevState => ({
       errors: [
-        ...prevState.errors, {
+        ...prevState.errors,
+        {
           elm,
           msg
         }
@@ -194,46 +173,44 @@ class RegisterBox extends React.Component {
   }
 
   clearValidationErr(elm) {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       let newArr = [];
       for (let err of prevState.errors) {
         if (elm !== err.elm) {
           newArr.push(err);
         }
       }
-      return {errors: newArr};
+      return { errors: newArr };
     });
   }
 
   onUsernameChange(e) {
-    this.setState({username: e.target.value});
+    this.setState({ username: e.target.value });
     this.clearValidationErr("username");
   }
 
   onEmailChange(e) {
-    this.setState({email: e.target.value});
+    this.setState({ email: e.target.value });
     this.clearValidationErr("email");
   }
   onConfirmPasswordChange(e) {
-    this.setState({confirmPassword: e.target.value});
+    this.setState({ confirmPassword: e.target.value });
     this.clearValidationErr("confirmPassword");
   }
 
   onPasswordChange(e) {
-    this.setState({password: e.target.value});
+    this.setState({ password: e.target.value });
     this.clearValidationErr("password");
 
-    this.setState({pwdState: "weak"});
+    this.setState({ pwdState: "weak" });
     if (e.target.value.length > 8 && e.target.value.length < 12) {
-      this.setState({pwdState: "medium"});
+      this.setState({ pwdState: "medium" });
     } else if (e.target.value.length > 12) {
-      this.setState({pwdState: "strong"});
+      this.setState({ pwdState: "strong" });
     }
-
   }
 
   submitRegister(e) {
-
     console.log(this.state);
 
     if (this.state.username === "") {
@@ -245,12 +222,16 @@ class RegisterBox extends React.Component {
     if (this.state.password === "") {
       this.showValidationErr("password", "Password Cannot be empty!");
     }
-
   }
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
-    const isEnabled = email.length > 0 && password.length > 0 &&username.length>0 && password==confirmPassword && validateEmail(email);
+    const isEnabled =
+      email.length > 0 &&
+      password.length > 0 &&
+      username.length > 0 &&
+      password == confirmPassword &&
+      validateEmail(email);
 
     let usernameErr = null,
       passwordErr = null,
@@ -284,17 +265,11 @@ class RegisterBox extends React.Component {
     }
 
     return (
-      
       <div className="inner-container">
-        
-        <div className="header">
-          Register
-        </div>
-        
-        <div className="box">
+        <div className="header">Register</div>
 
+        <div className="box">
           <div className="input-group">
-            
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -302,13 +277,14 @@ class RegisterBox extends React.Component {
               className="login-input"
               placeholder="Username"
               value={this.state.username}
-              onChange={this.onUsernameChange.bind(this)}/>
-            <small className="danger-error">{usernameErr ? usernameErr : ""}</small>
-          
+              onChange={this.onUsernameChange.bind(this)}
+            />
+            <small className="danger-error">
+              {usernameErr ? usernameErr : ""}
+            </small>
           </div>
 
           <div className="input-group">
-            
             <label htmlFor="email">Email</label>
             <input
               type="text"
@@ -316,14 +292,13 @@ class RegisterBox extends React.Component {
               className="login-input"
               placeholder="Email"
               value={this.state.email}
-              onChange={this.onEmailChange.bind(this)}/>
-            
+              onChange={this.onEmailChange.bind(this)}
+            />
+
             <small className="danger-error">{emailErr ? emailErr : ""}</small>
-          
           </div>
 
           <div className="input-group">
-            
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -331,45 +306,48 @@ class RegisterBox extends React.Component {
               className="login-input"
               placeholder="Password"
               value={this.state.password}
-              onChange={this.onPasswordChange.bind(this)}/>
-            <small className="danger-error">{passwordErr ? passwordErr : ""}</small>
+              onChange={this.onPasswordChange.bind(this)}
+            />
+            <small className="danger-error">
+              {passwordErr ? passwordErr : ""}
+            </small>
 
-            {this.state.password && <div className="password-state">
-              
-              <div className={"pwd pwd-weak " + (pwdWeak ? "show" : "")}></div>  
-              <div className={"pwd pwd-medium " + (pwdMedium ? "show" : "")}></div>  
-              <div className={"pwd pwd-strong " + (pwdStrong ? "show" : "")}></div>
-            
-          </div>}
-          <div className="input-group">
-            
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              className="login-input"
-              placeholder="Confirm Password"
-              value={this.state.confirmPassword}
-              onChange={this.onConfirmPasswordChange.bind(this)}/>
-            
-            <small className="danger-error">{emailErr ? emailErr : ""}</small>
-          
+            {this.state.password && (
+              <div className="password-state">
+                <div className={"pwd pwd-weak " + (pwdWeak ? "show" : "")} />
+                <div
+                  className={"pwd pwd-medium " + (pwdMedium ? "show" : "")}
+                />
+                <div
+                  className={"pwd pwd-strong " + (pwdStrong ? "show" : "")}
+                />
+              </div>
+            )}
+            <div className="input-group">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                className="login-input"
+                placeholder="Confirm Password"
+                value={this.state.confirmPassword}
+                onChange={this.onConfirmPasswordChange.bind(this)}
+              />
+
+              <small className="danger-error">{emailErr ? emailErr : ""}</small>
+            </div>
           </div>
-
-        </div>
 
           <button
             type="button"
             //className="login-btn"
             onClick={this.submitRegister.bind(this)}
-			      disabled={!isEnabled}>
+            disabled={!isEnabled}
+          >
             Register
           </button>
-
         </div>
-
       </div>
-
     );
   }
 }
@@ -377,6 +355,6 @@ class RegisterBox extends React.Component {
 export default LR;
 
 function validateEmail(email) {
-    var validity = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return validity.test(String(email).toLowerCase());
+  var validity = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return validity.test(String(email).toLowerCase());
 }
