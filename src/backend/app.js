@@ -25,30 +25,113 @@ app.get("/test", function(request, response){
     };
     console.log(query);
     // where we query the user inputs in db
-    db.collection("Data").find(query).toArray(function(err, docs)
-    {
-        if (err)
+   
+    //Based on whether the user enters info in zipcode or food preference fields
+    //Handle the query search in db
+    if(query.zipcode == "" && query.cuisine_type == "" ){
+        db.collection("restaurantData").find().limit(5).toArray(function(err, docs)
         {
-            console.log("err");
-        }
-        else{ // if no error is encountered
-            // response object that is sending back the db info
-        console.log("Server encountered no errors");
-        console.log(docs);
-            response.status(200).json(docs);
-        }
-    });
-
-    /*
-    const testObject = {
-        name: "Joe's Pizza",
-        zipcode: 10003,
-        cuisine: "American"
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+            console.log("Server encountered no errors");
+            console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
     }
-    // this is where we make a request to the database to retrieve data
-     response.status(200).json(testObject);
-     */
 
+    else if(query.zipcode == "" && query.cuisine_type == "No Preference" ){
+        db.collection("restaurantData").find().limit(5).toArray(function(err, docs)
+        {
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+            console.log("Server encountered no errors");
+            console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
+    }
+    
+    else if(query.zipcode == "" && query.cuisine_type != ""){
+        const newQuery ={
+            cuisine_type: request.query.foodPreference,
+        };
+        db.collection("restaurantData").aggregate([{$match: newQuery}, {$sample: {size: 5}}]).toArray(function(err, docs)
+        {
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+                console.log("Server encountered no errors");
+                console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
+    }
+
+    else if(query.zipcode != "" && query.cuisine_type == ""){
+        const newQuery ={
+            zipcode: request.query.location,
+        };
+        db.collection("restaurantData").aggregate([{$match: newQuery}, {$sample: {size: 5}}]).toArray(function(err, docs)
+        {
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+                console.log("Server encountered no errors");
+                console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
+    }
+
+    else if(query.zipcode != "" && query.cuisine_type == "No Preference"){
+        const newQuery ={
+            zipcode: request.query.location,
+        };
+        db.collection("restaurantData").aggregate([{$match: newQuery}, {$sample: {size: 5}}]).toArray(function(err, docs)
+        {
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+                console.log("Server encountered no errors");
+                console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
+    }
+
+    else{
+        db.collection("restaurantData").aggregate([{$match: query}, {$sample: {size: 5}}]).toArray(function(err, docs)
+        {
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+                console.log("Server encountered no errors");
+                console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
+    }
 });
 
 const url = "mongodb://localhost/restaurant";
@@ -62,24 +145,6 @@ mongoose.connect(url, function(error, database)
         console.log("database is good to go!");
     }
 });
-
-// this is our get method
-// this method fetches all available data in our database
-// router.get("/test", (req, res) => {
-//     Data.find((err, data) => {
-//       if (err) return res.json({ success: false, error: err });
-//       return res.json({ success: true, data: data });
-//     });
-//   });
-
-  
-// componentDidMount() {
-//     axios.get('/test/')
-//         .then(res => {
-//             const query = res.data;
-//             this.setState({ query });
-//         })
-// }
 
 // this should always be at the bottom of the file, listening on the port that we define
 app.listen(PORT, function(){
