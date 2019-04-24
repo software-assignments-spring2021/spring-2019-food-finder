@@ -20,15 +20,18 @@ app.get("/test", function(request, response){
     const query = {
         zipcode: request.query.location,
         cuisine_type: request.query.foodPreference,
-        //walkingTime: request.query.walkingTime,  
+        borough: request.query.walkingTime,  
     
     };
     console.log(query);
     // where we query the user inputs in db
    
+    //User enters their zipcode, which is not immediately used to search the query
     //Based on whether the user enters info in zipcode or food preference fields
     //Handle the query search in db
-    if(query.zipcode == "" && query.cuisine_type == "" ){
+
+    //This is if there's no zipcode, no preference/nothing for cuisine type, no walking Time
+    if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "No Preference"){
         db.collection("restaurantData").find().limit(5).toArray(function(err, docs)
         {
             if (err)
@@ -44,8 +47,12 @@ app.get("/test", function(request, response){
         });
     }
 
-    else if(query.zipcode == "" && query.cuisine_type == "No Preference" ){
-        db.collection("restaurantData").find().limit(5).toArray(function(err, docs)
+    //This is if there's no zipcode, no preference/nothing for cuisine type, a borough specified
+    else if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && (query.borough != "No Preference" && query.borough != "Nearby")){
+        const newQuery ={
+            borough: request.query.walkingTime,
+        };
+        db.collection("restaurantData").aggregate([{$match: newQuery}, {$sample: {size: 5}}]).toArray(function(err, docs)
         {
             if (err)
             {
@@ -53,14 +60,15 @@ app.get("/test", function(request, response){
             }
             else{ // if no error is encountered
                 // response object that is sending back the db info
-            console.log("Server encountered no errors");
-            console.log(docs);
+                console.log("Server encountered no errors");
+                console.log(docs);
                 response.status(200).json(docs);
             }
         });
     }
     
-    else if(query.zipcode == "" && query.cuisine_type != ""){
+    //This is if there's no zipcode, a food pref, and no borough pref
+    else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "No Preference"){
         const newQuery ={
             cuisine_type: request.query.foodPreference,
         };
@@ -79,7 +87,30 @@ app.get("/test", function(request, response){
         });
     }
 
-    else if(query.zipcode != "" && query.cuisine_type == ""){
+    //This is if there's no zipcode, a food pref, and a borough pref
+    else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough != "No Preference"){
+        const newQuery ={
+            cuisine_type: request.query.foodPreference,
+            borough: request.query.walkingTime,
+        };
+        db.collection("restaurantData").aggregate([{$match: newQuery}, {$sample: {size: 5}}]).toArray(function(err, docs)
+        {
+            if (err)
+            {
+                console.log("err");
+            }
+            else{ // if no error is encountered
+                // response object that is sending back the db info
+                console.log("Server encountered no errors");
+                console.log(docs);
+                response.status(200).json(docs);
+            }
+        });
+    }
+
+    //This is if there's a zipcode, no food pref, and nearby
+    //Nearby and zipcode should always go together
+    else if(query.zipcode != "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "Nearby"){
         const newQuery ={
             zipcode: request.query.location,
         };
@@ -98,9 +129,12 @@ app.get("/test", function(request, response){
         });
     }
 
-    else if(query.zipcode != "" && query.cuisine_type == "No Preference"){
+    //This is for zipcode and food pref, and nearby
+    else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "Nearby"){
         const newQuery ={
+            cuisine_type: request.query.foodPreference,
             zipcode: request.query.location,
+            //borough: request.query.walkingTime,
         };
         db.collection("restaurantData").aggregate([{$match: newQuery}, {$sample: {size: 5}}]).toArray(function(err, docs)
         {
@@ -117,6 +151,8 @@ app.get("/test", function(request, response){
         });
     }
 
+    //This is going to be obsolete, but until we figure out the nearby/zipcode thing, 
+    //this allows for freeform entry and reminds the user to make sure zipcode is in borough
     else{
         db.collection("restaurantData").aggregate([{$match: query}, {$sample: {size: 5}}]).toArray(function(err, docs)
         {
@@ -128,6 +164,10 @@ app.get("/test", function(request, response){
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
                 console.log(docs);
+                console.log(docs.size);
+                if(docs.size == undefined){
+                    console.log("Make sure that the zipcode is in your borough!");
+                }
                 response.status(200).json(docs);
             }
         });
