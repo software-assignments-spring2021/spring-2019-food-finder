@@ -1,0 +1,8 @@
+/* mongoimport --db restaurants --collection userData --drop --file <the complete path to User-Data.json from your computer> */
+/*How I did it: mongoimport --db restaurants --collection userData --drop --file C:\Users\EnemyField\Documents\Desktop\Agile\Food-Finder\Data\Restaurant-Data.json*/
+
+{"username": "ak5352", "email": "ak5352@nyu.edu", "password": "aaaaaa"}
+{"username": "vinniezhang", "email": "vz377@nyu.edu", "password": "1234"}
+{"username": "mbakaleynikov", "email": "mb6376@nyu.edu", "password": "irlydk"}
+{"username": "atanuku", "email": "akt352@nyu.edu", "password": "ABCDEFG"}
+{"username": "azaw", "email": "az1332@nyu.edu", "password": "aaAaa@aa"}
