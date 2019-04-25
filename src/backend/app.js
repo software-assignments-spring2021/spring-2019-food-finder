@@ -23,6 +23,16 @@ app.get("/test", function(request, response){
         borough: request.query.walkingTime,  
     
     };
+
+    const registrationInfo = {
+        username: request.registrationInfo.username,
+        email: request.registrationInfo.email,
+        password: request.registrationInfo.password,
+
+    };
+
+    console.log(registrationInfo);
+
     console.log(query);
     // where we query the user inputs in db
    
