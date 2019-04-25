@@ -9,7 +9,7 @@ import {
   IconButton
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import LR from "./Login";
+import { Link } from "react-router-dom";
 
 const styles = {
   root: {
@@ -27,19 +27,8 @@ const styles = {
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.openLogin = this.openLogin.bind(this);
-    this.state = {
-      LR: null
-    };
   }
 
-  openLogin = () => {
-    if (this.state.LR === null) {
-      this.setState({ LR: <LR /> });
-    } else {
-      this.setState({ LR: null });
-    }
-  };
   render() {
     const { classes } = this.props;
     return (
@@ -53,10 +42,16 @@ class Header extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h4" color="inherit" className={classes.grow}>
+            <Typography
+              variant="h4"
+              color="inherit"
+              className={classes.grow}
+              component={Link}
+              to="/"
+            >
               Rouxlette
             </Typography>
-            <Button color="inherit" id="loginButton" onClick={this.openLogin}>
+            <Button color="inherit" component={Link} to="/login">
               Login
             </Button>
           </Toolbar>
