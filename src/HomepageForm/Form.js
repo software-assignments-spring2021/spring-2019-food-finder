@@ -22,9 +22,6 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 200
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2
   }
 });
 
@@ -80,7 +77,6 @@ class Form extends React.Component {
               id="standard-name"
               label="Your Zipcode"
               value={this.state.location}
-              className={classes.formControl}
               onChange={this.handleChange("location")}
               error={
                 this.state.location.length !== 5 &&
@@ -213,7 +209,7 @@ class Form extends React.Component {
         <Grid item xs={12}>
           <Button
             onClick={() => this.onSubmit()}
-            color="primary"
+            color="secondary"
             margin="small"
             size="large"
             variant="raised"
