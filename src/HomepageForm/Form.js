@@ -9,10 +9,10 @@ import {
   Button,
   MenuItem,
   FormControl,
-  Paper,
   Grid
 } from "@material-ui/core";
 import IntegrationDownshift from "./Downshift";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -25,9 +25,6 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2
-  },
-  paper: {
-    padding: 50
   }
 });
 
@@ -42,7 +39,7 @@ class Form extends React.Component {
   }
 
   onSubmit = e => {
-    this.props.onSubmit(this.state);
+    console.log("test");
     axios.get("/test", { params: this.state }).then(res => {
       const query = res.data;
       this.setState({ query });
@@ -220,6 +217,8 @@ class Form extends React.Component {
             margin="small"
             size="large"
             variant="raised"
+            component={Link}
+            to="/results"
           >
             Submit
           </Button>

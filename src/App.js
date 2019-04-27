@@ -2,9 +2,9 @@ import React, { Fragment, Component } from "react";
 import { Form } from "./HomepageForm/index";
 import { Header } from "./Layouts";
 import LR from "./Layouts/Login";
-import LoginTest from "./Layouts/LoginTest";
 import { BrowserRouter, Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import Results from "./Layouts/Results";
 import "typeface-roboto";
 
 /*const theme = createMuiTheme({
@@ -28,7 +28,7 @@ class App extends Component {
             <Header />
             <Route path="/" component={Form} exact />
             <Route path="/login" component={LR} />
-            <Route path="/about" component={LoginTest} />
+            <Route path="/results" component={Results} />
           </Fragment>
         </BrowserRouter>
       </MuiThemeProvider>

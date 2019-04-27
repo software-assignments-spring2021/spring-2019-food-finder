@@ -47,6 +47,7 @@ class Header extends React.Component {
               color="inherit"
               className={classes.grow}
               component={Link}
+              style={{ textDecoration: "none" }}
               to="/"
             >
               Rouxlette
