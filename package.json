@@ -38,6 +38,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
+    "downshift": "^3.2.10",
     "gh-pages": "^2.0.1",
     "mongoose": "^5.5.0",
     "nodemon": "^1.18.11",
