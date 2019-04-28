@@ -14,7 +14,7 @@ const About = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Typography variant="h2" gutterBottom>
+      <Typography variant="h3" gutterBottom>
         About Rouxlette
       </Typography>
       <br />
