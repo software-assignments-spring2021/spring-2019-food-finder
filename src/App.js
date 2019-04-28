@@ -34,6 +34,16 @@ class App extends Component {
             <Route path="/login" component={LR} />
             <Route path="/results" component={Results} />
             <Route path="/about" component={About} />
+            <Route
+              path="/github"
+              component={() => (
+                window.open(
+                  "https://github.com/nyu-software-engineering/food-finder",
+                  "_blank"
+                ),
+                (window.location = "/")
+              )}
+            />
           </Fragment>
         </BrowserRouter>
       </MuiThemeProvider>
