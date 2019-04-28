@@ -119,8 +119,12 @@ class Header extends React.Component {
                 className={classes.rightButton}
                 color="inherit"
                 aria-label="Github Repository"
-                component={Link}
-                to="/github"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/nyu-software-engineering/food-finder",
+                    "_blank"
+                  )
+                }
               >
                 <GithubIcon />
               </IconButton>
