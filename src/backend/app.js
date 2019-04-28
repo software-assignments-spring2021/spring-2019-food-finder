@@ -11,16 +11,24 @@ let db;
 const router = express.Router();
 //const state = require('./Form.js');
 
-app.get("/test2", function(request, response){
+// app.get("/test2", function(request, response){
+
+//     const userInfo = {
+//         username: request.userInfo.username,
+//         email: request.userInfo.email,
+//         password: request.userInfo.password,
+//     }
+//     console.log("user info: " + userInfo);
+// })
+
+app.post("/test2", function(request, response){
 
     const userInfo = {
         username: request.userInfo.username,
         email: request.userInfo.email,
         password: request.userInfo.password,
     }
-    
-    console.log(userInfo);
-    console.log("hello world");
+    console.log("user info: " + userInfo);
 })
 
 // this is the first test route

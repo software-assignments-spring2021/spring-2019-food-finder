@@ -157,8 +157,33 @@ class RegisterBox extends React.Component {
       const userInfo = res.data;
       this.setState({ userInfo });
 
-      console.log(this.state);
+      console.log("res data: "+ res.data);
     });
+
+    if (this.username === "") {
+      this.showValidationErr("username", "Username Cannot be empty!");
+    } else {
+        this.setState({
+          username: this.state.username,
+        });
+        console.log("username: "+ this.state.username);
+    }
+    if (this.state.email === "") {
+      this.showValidationErr("email", "Email Cannot be empty!");
+    } else {
+        this.setState({
+          email: this.state.email,
+        });
+        console.log("email: "+ this.state.email);
+    }
+    if (this.state.password === "") {
+      this.showValidationErr("password", "Password Cannot be empty!");
+    } else {
+        this.setState({
+          password: this.state.password,
+        });
+        console.log("pw: "+ this.state.password);
+    }
 
   }
 
@@ -221,37 +246,39 @@ class RegisterBox extends React.Component {
     }
   }
 
-  submitRegister(e) {
-    console.log(this.state);
+ // submitRegister(e) {
 
-    if (this.state.username === "") {
-      this.showValidationErr("username", "Username Cannot be empty!");
-    } else {
-        e.setState({
-          username: this.state.username,
-        });
-    }
-    if (this.state.email === "") {
-      this.showValidationErr("email", "Email Cannot be empty!");
-    } else {
-        e.setState({
-          email: this.state.email,
-        });
-    }
-    if (this.state.password === "") {
-      this.showValidationErr("password", "Password Cannot be empty!");
-    } else {
-        e.setState({
-          password: this.state.password,
-        });
-    }
+    // if (e.username === "") {
+    //   this.showValidationErr("username", "Username Cannot be empty!");
+    // } else {
+    //     console.log("state: "+ this.state);
+    //     this.setState({
+    //       username: this.state.username,
+    //     });
+    // }
+    // if (this.state.email === "") {
+    //   this.showValidationErr("email", "Email Cannot be empty!");
+    // } else {
+    //     console.log("state: "+ this.state);
+    //     this.setState({
+    //       email: this.state.email,
+    //     });
+    // }
+    // if (this.state.password === "") {
+    //   this.showValidationErr("password", "Password Cannot be empty!");
+    // } else {
+    //   console.log("state: "+ this.state);
+    //     this.setState({
+    //       password: this.state.password,
+    //     });
+    // }
 
     // axios.get("/test2", {params: this.state}).then(res => {
     //   const userInfo = res.data;
     //   this.setState({userInfo});
     // });
 
-  }
+ // }
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
