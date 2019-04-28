@@ -1,9 +1,7 @@
 import React from "react";
 import reactDOM from "react-dom";
 import "./Login.css";
-
 import TransitionGroup from "react-transition-group";
-
 import FadeTransition from "./transitions/fadeTransition";
 
 class LR extends React.Component {

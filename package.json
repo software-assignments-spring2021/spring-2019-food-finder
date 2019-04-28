@@ -38,6 +38,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
+    "downshift": "^3.2.10",
     "gh-pages": "^2.0.1",
     "mongoose": "^5.5.0",
     "nodemon": "^1.18.11",
@@ -45,6 +46,7 @@
     "react": "^16.8.3",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.3",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.8",
     "typeface-roboto": "0.0.54"
   },
@@ -54,6 +56,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-
   "proxy": "http://localhost:5000"
 }

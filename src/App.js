@@ -1,45 +1,42 @@
 import React, { Fragment, Component } from "react";
-import "./App.css";
 import { Form } from "./HomepageForm/index";
-import { Header, Footer } from "./Layouts";
+import { Header } from "./Layouts";
 import LR from "./Layouts/Login";
-import { Button } from "@material-ui/core";
+import { BrowserRouter, Route } from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import Results from "./Layouts/Results";
+import About from "./Layouts/About";
+import "typeface-roboto";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#222831"
+    },
+    secondary: {
+      main: "#393e46"
+    }
+  }
+});
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.openLogin = this.openLogin.bind(this);
-    this.state = {
-      LR: null
-    };
   }
-  onSubmit = fields => {
-    console.log("Location is: ", fields.location);
-    console.log("Food Preference is: ", fields.foodPreference);
-    console.log("Walking time is: ", fields.walkingTime);
-  };
-
-  openLogin = () => {
-    if (this.state.LR === null) {
-      this.setState({ LR: <LR /> });
-    } else {
-      this.setState({ LR: null });
-    }
-  };
 
   render() {
     return (
-      <Fragment>
-        <Header />
-        <Button id="loginButton" onClick={this.openLogin}>
-          LOGIN
-        </Button>
-        <div className="App">
-          <Form onSubmit={fields => this.onSubmit(fields)} />
-        </div>
-        {this.state.LR}
-        <Footer />
-      </Fragment>
+      <MuiThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Fragment>
+            <Header />
+            <Route path="/" component={Form} exact />
+            <Route path="/login" component={LR} />
+            <Route path="/results" component={Results} />
+            <Route path="/about" component={About} />
+          </Fragment>
+        </BrowserRouter>
+      </MuiThemeProvider>
     );
   }
 }
