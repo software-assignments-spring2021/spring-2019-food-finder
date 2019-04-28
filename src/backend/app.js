@@ -17,13 +17,11 @@ app.get("/test2", function(request, response){
         username: request.userInfo.username,
         email: request.userInfo.email,
         password: request.userInfo.password,
-
-    };
-
+    }
+    
     console.log(userInfo);
     console.log("hello world");
-
-});
+})
 
 // this is the first test route
 app.get("/test", function(request, response){
