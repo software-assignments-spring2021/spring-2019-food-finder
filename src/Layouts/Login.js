@@ -3,6 +3,7 @@ import reactDOM from "react-dom";
 import "./Login.css";
 import TransitionGroup from "react-transition-group";
 import FadeTransition from "./transitions/fadeTransition";
+import Axios from "axios";
 
 class LR extends React.Component {
   constructor(props) {
@@ -149,6 +150,17 @@ class RegisterBox extends React.Component {
       pwdState: null
     };
   }
+
+  submitRegister = e => {
+
+    this.props.submitRegister(this.state);
+    axios.get("/test", { params: this.state }).then(res => {
+      const query = res.data;
+      this.setState({ query });
+    })
+
+  }
+
   validateFormRegister() {
     return (
       this.state.email.length > 0 &&
@@ -220,6 +232,12 @@ class RegisterBox extends React.Component {
     if (this.state.password === "") {
       this.showValidationErr("password", "Password Cannot be empty!");
     }
+
+    axios.get("/test", {params: this.state}).then(res => {
+      const userInfo = res.data;
+      this.setState({userInfo});
+    });
+
   }
 
   render() {
