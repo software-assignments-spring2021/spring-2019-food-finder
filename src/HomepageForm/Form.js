@@ -11,7 +11,6 @@ import {
   FormControl,
   Grid
 } from "@material-ui/core";
-import IntegrationDownshift from "./Downshift";
 import { Link } from "react-router-dom";
 
 const styles = theme => ({
