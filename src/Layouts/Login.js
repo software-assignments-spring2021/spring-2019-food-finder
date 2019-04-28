@@ -3,7 +3,7 @@ import reactDOM from "react-dom";
 import "./Login.css";
 import TransitionGroup from "react-transition-group";
 import FadeTransition from "./transitions/fadeTransition";
-import Axios from "axios";
+import axios from "axios";
 
 class LR extends React.Component {
   constructor(props) {
@@ -153,11 +153,12 @@ class RegisterBox extends React.Component {
 
   submitRegister = e => {
 
-    this.props.submitRegister(this.state);
-    axios.get("/test", { params: this.state }).then(res => {
-      const query = res.data;
-      this.setState({ query });
-    })
+    axios.get("/test2", { params: this.state }).then(res => {
+      const userInfo = res.data;
+      this.setState({ userInfo });
+
+      console.log(this.state);
+    });
 
   }
 
@@ -225,18 +226,30 @@ class RegisterBox extends React.Component {
 
     if (this.state.username === "") {
       this.showValidationErr("username", "Username Cannot be empty!");
+    } else {
+        e.setState({
+          username: this.state.username,
+        });
     }
     if (this.state.email === "") {
       this.showValidationErr("email", "Email Cannot be empty!");
+    } else {
+        e.setState({
+          email: this.state.email,
+        });
     }
     if (this.state.password === "") {
       this.showValidationErr("password", "Password Cannot be empty!");
+    } else {
+        e.setState({
+          password: this.state.password,
+        });
     }
 
-    axios.get("/test", {params: this.state}).then(res => {
-      const userInfo = res.data;
-      this.setState({userInfo});
-    });
+    // axios.get("/test2", {params: this.state}).then(res => {
+    //   const userInfo = res.data;
+    //   this.setState({userInfo});
+    // });
 
   }
 
