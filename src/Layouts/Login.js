@@ -160,6 +160,9 @@ class RegisterBox extends React.Component {
       console.log("res data: "+ res.data);
     });
 
+    // will console log the statements but won't store into the variable
+    // an issue with the setState function and poosibly a need
+    // to implement post request in backend --> need to resolve
     if (this.username === "") {
       this.showValidationErr("username", "Username Cannot be empty!");
     } else {
@@ -246,6 +249,7 @@ class RegisterBox extends React.Component {
     }
   }
 
+  // commented this out and put in into the first submitRegister function above
  // submitRegister(e) {
 
     // if (e.username === "") {
