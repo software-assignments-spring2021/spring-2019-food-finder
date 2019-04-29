@@ -2,6 +2,182 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { Paper, Grid, Typography } from "@material-ui/core";
+import axios from "axios";
+import Form from '../HomepageForm/Form.js';
+
+const query = {
+  zipcode: Form.location,
+  cuisine_type: Form.foodPreference,
+  borough: Form.walkingTime  
+
+};
+class App extends React.Component {
+state = {
+  restaurants: [],
+  isLoading: true,
+  errors: null
+};
+
+getRestaurants() {
+  if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "No Preference"){
+    
+
+  axios.get("http://localhost:3000/restaurantData", {
+    params: {
+    }
+  })
+    // Once we get a response and store data, let's change the loading state
+    .then(response => {
+      this.setState({
+        restaurants: response.data,
+        isLoading: false
+      });
+    })
+    // If we catch any errors connecting, let's update accordingly
+    .catch(error => this.setState({ error, isLoading: false }));
+}
+
+else if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && (query.borough != "No Preference" && query.borough != "Nearby")){
+  const newQuery ={
+      borough: query.walkingTime,
+  };
+  axios.get("http://localhost:3000/restaurantData", {
+    params: {
+      borough: query.borough
+    }
+  })
+    // Once we get a response and store data, let's change the loading state
+    .then(response => {
+      this.setState({
+        restaurants: response.data,
+        isLoading: false
+      });
+    })
+    // If we catch any errors connecting, let's update accordingly
+    .catch(error => this.setState({ error, isLoading: false }));
+}
+
+
+
+
+else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "No Preference"){
+  const newQuery ={
+      cuisine_type: query.foodPreference,
+  };
+  axios.get("http://localhost:3000/restaurantData", {
+    params: {
+      cuisine_type: query.cuisine_type
+    }
+  })
+    // Once we get a response and store data, let's change the loading state
+    .then(response => {
+      this.setState({
+        restaurants: response.data,
+        isLoading: false
+      });
+    })
+    // If we catch any errors connecting, let's update accordingly
+    .catch(error => this.setState({ error, isLoading: false }));
+
+}
+
+else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough != "No Preference"){
+  const newQuery ={
+      cuisine_type: query.foodPreference,
+      borough: query.walkingTime,
+  };
+  axios.get("http://localhost:3000/restaurantData", {
+    params: {
+      cuisine_type: query.cuisine_type,
+      borough: query.borough
+    }
+  })
+    // Once we get a response and store data, let's change the loading state
+    .then(response => {
+      this.setState({
+        restaurants: response.data,
+        isLoading: false
+      });
+    })
+    // If we catch any errors connecting, let's update accordingly
+    .catch(error => this.setState({ error, isLoading: false }));
+
+}
+
+else if(query.zipcode != "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "Nearby"){
+  const newQuery ={
+      zipcode: query.location,
+  };
+  axios.get("http://localhost:3000/restaurantData", {
+    params: {
+      zipcode: query.zipcode
+    }
+  })
+    // Once we get a response and store data, let's change the loading state
+    .then(response => {
+      this.setState({
+        restaurants: response.data,
+        isLoading: false
+      });
+    })
+    // If we catch any errors connecting, let's update accordingly
+    .catch(error => this.setState({ error, isLoading: false }));
+
+}
+else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "Nearby"){
+  const newQuery ={
+      cuisine_type: query.foodPreference,
+      zipcode: query.location,
+      //borough: request.query.walkingTime,
+  };
+  axios.get("http://localhost:3000/restaurantData", {
+    params: {
+      cuisine_type: query.cuisine_type,
+      zipcode: query.zipcode
+    }
+  })
+    // Once we get a response and store data, let's change the loading state
+    .then(response => {
+      this.setState({
+        restaurants: response.data,
+        isLoading: false
+      });
+    })
+    // If we catch any errors connecting, let's update accordingly
+    .catch(error => this.setState({ error, isLoading: false }));
+
+}
+}
+// Let's our app know we're ready to render the data
+//componentDidMount() {
+  //this.getRestaurants();
+//}
+// Putting that data to use
+/*render() {
+  const { isLoading, posts } = this.state;
+  return (
+    <React.Fragment>
+      <h2>Random Post</h2>
+      <div>
+        {!isLoading ? (
+          posts.map(post => {
+            const { zipcode, cuisine_type, borough } = post;
+            return (
+              <div key={_id}>
+                <h2>{}</h2>
+                <p>{content}</p>
+                <hr />
+              </div>
+            );
+          })
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </React.Fragment>
+  );
+        }*/
+}
 
 const styles = theme => ({
   paper: {
