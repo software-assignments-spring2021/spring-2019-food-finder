@@ -248,11 +248,8 @@ class RegisterBox extends React.Component {
       this.setState({ pwdState: "strong" });
     }
   }
-
-<<<<<<< HEAD
+  
   // commented this out and put in into the first submitRegister function above
-=======
->>>>>>> 1af85f6f6701ab270b5fcbaf200248e397a4278b
  // submitRegister(e) {
 
     // if (e.username === "") {
