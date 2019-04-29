@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import axios from "axios";
-import {location} from './HomepageForm/Form.js';
-import {walkingTime} from './HomepageForm/Form.js';
-import {foodPreference} from './HomepageForm/Form.js';
+import Form from '../HomepageForm/Form.js';
+
 const query = {
-  zipcode: location,
-  cuisine_type: foodPreference,
-  borough: walkingTime  
+  zipcode: Form.location,
+  cuisine_type: Form.foodPreference,
+  borough: Form.walkingTime  
 
 };
 class App extends React.Component {
@@ -40,7 +39,7 @@ getRestaurants() {
 
 else if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && (query.borough != "No Preference" && query.borough != "Nearby")){
   const newQuery ={
-      borough: request.query.walkingTime,
+      borough: query.walkingTime,
   };
   axios.get("http://localhost:3000/restaurantData", {
     params: {
@@ -63,7 +62,7 @@ else if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type =
 
 else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "No Preference"){
   const newQuery ={
-      cuisine_type: request.query.foodPreference,
+      cuisine_type: query.foodPreference,
   };
   axios.get("http://localhost:3000/restaurantData", {
     params: {
@@ -84,13 +83,13 @@ else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type !
 
 else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough != "No Preference"){
   const newQuery ={
-      cuisine_type: request.query.foodPreference,
-      borough: request.query.walkingTime,
+      cuisine_type: query.foodPreference,
+      borough: query.walkingTime,
   };
   axios.get("http://localhost:3000/restaurantData", {
     params: {
       cuisine_type: query.cuisine_type,
-      borough:query.borough
+      borough: query.borough
     }
   })
     // Once we get a response and store data, let's change the loading state
@@ -107,7 +106,7 @@ else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type !
 
 else if(query.zipcode != "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "Nearby"){
   const newQuery ={
-      zipcode: request.query.location,
+      zipcode: query.location,
   };
   axios.get("http://localhost:3000/restaurantData", {
     params: {
@@ -127,8 +126,8 @@ else if(query.zipcode != "" && (query.cuisine_type == "" || query.cuisine_type =
 }
 else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "Nearby"){
   const newQuery ={
-      cuisine_type: request.query.foodPreference,
-      zipcode: request.query.location,
+      cuisine_type: query.foodPreference,
+      zipcode: query.location,
       //borough: request.query.walkingTime,
   };
   axios.get("http://localhost:3000/restaurantData", {

@@ -228,9 +228,7 @@ class Form extends React.Component {
   //     res.sendFile("./backend/state.html");
   // });
 }
-export {walkingTime};
-export {foodPreference};
-export {location};
+
 Form.propTypes = {
   classes: PropTypes.object.isRequired
 };
