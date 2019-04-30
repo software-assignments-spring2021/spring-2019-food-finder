@@ -32,7 +32,7 @@ class App extends Component {
           <Fragment>
             <Header />
             <Route path="/" component={Form} exact />
-            <Route path="/login" component={Login} />
+            <Route path="/login" component={LR} />
             <Route path="/results" component={Results} />
             <Route path="/about" component={About} />
           </Fragment>
