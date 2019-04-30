@@ -35,7 +35,6 @@ class Form extends React.Component {
   }
 
   onSubmit = e => {
-    console.log("test");
     axios.get("/test", { params: this.state }).then(res => {
       const query = res.data;
       this.setState({ query });
