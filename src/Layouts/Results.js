@@ -180,10 +180,16 @@ else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type !
 }
 
 const styles = theme => ({
+  root: {
+    marginTop: 25
+  },
   paper: {
     padding: 25,
-    textAlign: "center",
-    color: theme.palette.text.secondary
+    textAlign: "center"
+  },
+  grid: {
+    marginTop: 25,
+    marginBottom: 25
   }
 });
 
@@ -193,12 +199,11 @@ const Results = props => {
     <Grid
       container
       direction="column"
-      justify="center"
       alignItems="center"
-      spacing={40}
-      style={{ minHeight: "70vh" }}
+      spacing={0}
+      className={classes.root}
     >
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.grid}>
         <Paper className={classes.paper} elevation={3}>
           <Typography variant="h4">Result 1</Typography>
           <br />
@@ -210,7 +215,7 @@ const Results = props => {
           </Typography>
         </Paper>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.grid}>
         <Paper className={classes.paper} elevation={3}>
           <Typography variant="h4">Result 2</Typography>
           <br />
@@ -221,7 +226,7 @@ const Results = props => {
           </Typography>
         </Paper>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.grid}>
         <Paper className={classes.paper} elevation={3}>
           <Typography variant="h4">Result 3</Typography>
           <br />
