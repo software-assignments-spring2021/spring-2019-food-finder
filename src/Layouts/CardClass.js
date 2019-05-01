@@ -19,7 +19,7 @@ const styles = theme => ({
     textAlign: "center"
   },
   card: {
-    maxWidth: 500
+    maxWidth: "100%"
   },
   expand: {
     transform: "rotate(0deg)",
@@ -30,6 +30,12 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: "rotate(180deg)"
+  },
+  image: {
+    maxWidth: "90%",
+    display: "flex",
+    margin: "auto",
+    borderRadius: 3
   }
 });
 
@@ -44,7 +50,7 @@ class CardClass extends React.Component {
       <Card className={classes.card} raised="true">
         <CardHeader title={this.props.name} subheader={this.props.subheader} />
         <CardContent>
-          <Typography variant="body">{this.props.content}</Typography>
+          <img src={this.props.image} className={classes.image} bo />
         </CardContent>
         <CardActions>
           <IconButton
