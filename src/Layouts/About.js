@@ -62,10 +62,11 @@ class About extends React.Component {
           </Grid>
           <Grid item md className={classes.card}>
             <CardClass
-              name="Vinnie"
-              subheader="subheader"
+              name="Vinnie Zhang"
+              subheader="vz377@nyu.edu"
               image={vinnie}
-              subcontent="subcontent"
+              subcontent="Vinnie is currently a junior studying Computer Science at NYU, and is double minoring in Web Development
+              and Creative Writing. She's a New York native and in her free time, enjoys reading/writing poetry, thrift shopping, and attending concerts!"
             />
           </Grid>
         </Grid>
