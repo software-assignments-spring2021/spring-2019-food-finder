@@ -11,20 +11,10 @@ let db;
 const router = express.Router();
 //const state = require('./Form.js');
 
-app.get("/test2", function(request, response){
-
-    const userInfo = {
-        username: request.userInfo.username,
-        email: request.userInfo.email,
-        password: request.userInfo.password,
-    }
-    console.log("user info: " + userInfo);
-})
-
 // this is the first test route
 app.get("/test", function(request, response){
-
-    const location = request.query.location;
+    console.log('in get /test');
+    const location = request.location;
 
     // our query!
     const query = {
@@ -33,7 +23,7 @@ app.get("/test", function(request, response){
         borough: request.query.walkingTime,  
     
     };
-
+    console.log(query);
     // where we query the user inputs in db
    
     //User enters their zipcode, which is not immediately used to search the query
@@ -51,7 +41,7 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
             console.log("Server encountered no errors");
-            //console.log(docs);
+            console.log(docs);
                 response.status(200).json(docs);
             }
         });
@@ -71,7 +61,7 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
-                //console.log(docs);
+                console.log(docs);
                 response.status(200).json(docs);
             }
         });
@@ -91,7 +81,7 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
-                //console.log(docs);
+                console.log(docs);
                 response.status(200).json(docs);
             }
         });
@@ -112,7 +102,7 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
-                //console.log(docs);
+                console.log(docs);
                 response.status(200).json(docs);
             }
         });
@@ -133,7 +123,7 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
-                //console.log(docs);
+                console.log(docs);
                 response.status(200).json(docs);
             }
         });
@@ -155,7 +145,7 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
-                //console.log(docs);
+                console.log(docs);
                 response.status(200).json(docs);
             }
         });
@@ -173,8 +163,8 @@ app.get("/test", function(request, response){
             else{ // if no error is encountered
                 // response object that is sending back the db info
                 console.log("Server encountered no errors");
-                //console.log(docs);
-                //console.log(docs.size);
+                console.log(docs);
+                console.log(docs.size);
                 if(docs.size == undefined){
                     console.log("Make sure that the zipcode is in your borough!");
                 }
@@ -184,7 +174,7 @@ app.get("/test", function(request, response){
     }
 });
 
-const url = "mongodb://localhost/restaurant";
+const url = "mongodb://localhost/restaurants";
 mongoose.connect(url, function(error, database)
 {
     if (error)

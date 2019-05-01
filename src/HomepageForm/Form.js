@@ -13,6 +13,12 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+const query = {
+  zipcode: '',
+  cuisine_type: '',
+  borough: '' 
+
+};
 const styles = theme => ({
   root: {
     display: "flex",
@@ -30,20 +36,60 @@ class Form extends React.Component {
     this.state = {
       location: "",
       foodPreference: "",
-      walkingTime: ""
+      walkingTime: "",
+      borough: "",
+      cuisine_type: "",
+      zipcode: ""
     };
   }
-
+  
   onSubmit = e => {
-    axios.get("/test", { params: this.state }).then(res => {
-      const query = res.data;
-      this.setState({ query });
-    });
+    console.log("test");
+    this.borough=this.location;
+    this.cuisine_type=this.foodPreference;
+    this.zipcode=this.location;
+    this.getRestaurants();
+    //axios.get("/test", { params: this.state }).then(res => {
+      //const query = res.data;
+      //this.setState({ query });
+   // });
   };
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
+
+
+
+
+
+  getRestaurants() {
+    console.log(this.state);
+    axios.get("http://localhost:5000/test", {
+      params: {
+        location: this.state.location,
+        foodPreference: this.state.foodPreference,
+        walkingTime: this.state.walkingTime
+      }
+    })
+      // Once we get a response and store data, let's change the loading state
+      .then(response => {
+        console.log(response)
+        //this.setState({
+         // restaurants: response.data,
+         // isLoading: false
+        //});
+      })
+      // If we catch any errors connecting, let's update accordingly
+      .catch(error => this.setState({ error, isLoading: false }));
+    }
+
+
+
+
+
+
+
 
   render() {
     const { classes } = this.props;
