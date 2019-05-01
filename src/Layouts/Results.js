@@ -18,136 +18,7 @@ state = {
   errors: null
 };
 
-getRestaurants() {
-  if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "No Preference"){
-    
 
-  axios.get("http://localhost:3000/restaurantData", {
-    params: {
-    }
-  })
-    // Once we get a response and store data, let's change the loading state
-    .then(response => {
-      this.setState({
-        restaurants: response.data,
-        isLoading: false
-      });
-    })
-    // If we catch any errors connecting, let's update accordingly
-    .catch(error => this.setState({ error, isLoading: false }));
-}
-
-else if(query.zipcode == "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && (query.borough != "No Preference" && query.borough != "Nearby")){
-  const newQuery ={
-      borough: query.walkingTime,
-  };
-  axios.get("http://localhost:3000/restaurantData", {
-    params: {
-      borough: query.borough
-    }
-  })
-    // Once we get a response and store data, let's change the loading state
-    .then(response => {
-      this.setState({
-        restaurants: response.data,
-        isLoading: false
-      });
-    })
-    // If we catch any errors connecting, let's update accordingly
-    .catch(error => this.setState({ error, isLoading: false }));
-}
-
-
-
-
-else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "No Preference"){
-  const newQuery ={
-      cuisine_type: query.foodPreference,
-  };
-  axios.get("http://localhost:3000/restaurantData", {
-    params: {
-      cuisine_type: query.cuisine_type
-    }
-  })
-    // Once we get a response and store data, let's change the loading state
-    .then(response => {
-      this.setState({
-        restaurants: response.data,
-        isLoading: false
-      });
-    })
-    // If we catch any errors connecting, let's update accordingly
-    .catch(error => this.setState({ error, isLoading: false }));
-
-}
-
-else if(query.zipcode == "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough != "No Preference"){
-  const newQuery ={
-      cuisine_type: query.foodPreference,
-      borough: query.walkingTime,
-  };
-  axios.get("http://localhost:3000/restaurantData", {
-    params: {
-      cuisine_type: query.cuisine_type,
-      borough: query.borough
-    }
-  })
-    // Once we get a response and store data, let's change the loading state
-    .then(response => {
-      this.setState({
-        restaurants: response.data,
-        isLoading: false
-      });
-    })
-    // If we catch any errors connecting, let's update accordingly
-    .catch(error => this.setState({ error, isLoading: false }));
-
-}
-
-else if(query.zipcode != "" && (query.cuisine_type == "" || query.cuisine_type == "No Preference") && query.borough == "Nearby"){
-  const newQuery ={
-      zipcode: query.location,
-  };
-  axios.get("http://localhost:3000/restaurantData", {
-    params: {
-      zipcode: query.zipcode
-    }
-  })
-    // Once we get a response and store data, let's change the loading state
-    .then(response => {
-      this.setState({
-        restaurants: response.data,
-        isLoading: false
-      });
-    })
-    // If we catch any errors connecting, let's update accordingly
-    .catch(error => this.setState({ error, isLoading: false }));
-
-}
-else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "Nearby"){
-  const newQuery ={
-      cuisine_type: query.foodPreference,
-      zipcode: query.location,
-      //borough: request.query.walkingTime,
-  };
-  axios.get("http://localhost:3000/restaurantData", {
-    params: {
-      cuisine_type: query.cuisine_type,
-      zipcode: query.zipcode
-    }
-  })
-    // Once we get a response and store data, let's change the loading state
-    .then(response => {
-      this.setState({
-        restaurants: response.data,
-        isLoading: false
-      });
-    })
-    // If we catch any errors connecting, let's update accordingly
-    .catch(error => this.setState({ error, isLoading: false }));
-
-}
-}
 // Let's our app know we're ready to render the data
 //componentDidMount() {
   //this.getRestaurants();
@@ -180,16 +51,10 @@ else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type !
 }
 
 const styles = theme => ({
-  root: {
-    marginTop: 25
-  },
   paper: {
     padding: 25,
-    textAlign: "center"
-  },
-  grid: {
-    marginTop: 25,
-    marginBottom: 25
+    textAlign: "center",
+    color: theme.palette.text.secondary
   }
 });
 
@@ -199,11 +64,12 @@ const Results = props => {
     <Grid
       container
       direction="column"
+      justify="center"
       alignItems="center"
-      spacing={0}
-      className={classes.root}
+      spacing={40}
+      style={{ minHeight: "70vh" }}
     >
-      <Grid item xs={12} className={classes.grid}>
+      <Grid item xs={12}>
         <Paper className={classes.paper} elevation={3}>
           <Typography variant="h4">Result 1</Typography>
           <br />
@@ -215,7 +81,7 @@ const Results = props => {
           </Typography>
         </Paper>
       </Grid>
-      <Grid item xs={12} className={classes.grid}>
+      <Grid item xs={12}>
         <Paper className={classes.paper} elevation={3}>
           <Typography variant="h4">Result 2</Typography>
           <br />
@@ -226,7 +92,7 @@ const Results = props => {
           </Typography>
         </Paper>
       </Grid>
-      <Grid item xs={12} className={classes.grid}>
+      <Grid item xs={12}>
         <Paper className={classes.paper} elevation={3}>
           <Typography variant="h4">Result 3</Typography>
           <br />
