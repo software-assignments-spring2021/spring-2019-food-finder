@@ -13,14 +13,14 @@ const router = express.Router();
 
 // this is the first test route
 app.get("/test", function(request, response){
-
+    console.log('in get /test');
     const location = request.location;
 
     // our query!
     const query = {
-        zipcode: request.location,
-        cuisine_type: request.foodPreference,
-        borough: request.walkingTime,  
+        zipcode: request.query.location,
+        cuisine_type: request.query.foodPreference,
+        borough: request.query.walkingTime,  
     
     };
     console.log(query);

@@ -36,7 +36,10 @@ class Form extends React.Component {
     this.state = {
       location: "",
       foodPreference: "",
-      walkingTime: ""
+      walkingTime: "",
+      borough: "",
+      cuisine_type: "",
+      zipcode: ""
     };
   }
   
@@ -44,12 +47,7 @@ class Form extends React.Component {
     console.log("test");
     this.borough=this.location;
     this.cuisine_type=this.foodPreference;
-    if (this.zipcode===null){
-      
-    }
-    else{  
     this.zipcode=this.location;
-  }
     this.getRestaurants();
     //axios.get("/test", { params: this.state }).then(res => {
       //const query = res.data;
@@ -66,12 +64,12 @@ class Form extends React.Component {
 
 
   getRestaurants() {
-    
+    console.log(this.state);
     axios.get("http://localhost:5000/test", {
       params: {
-        location: this.zipcode,
-        foodPreference: this.cuisine_type,
-        walkingTime: this.borough
+        location: this.state.location,
+        foodPreference: this.state.foodPreference,
+        walkingTime: this.state.walkingTime
       }
     })
       // Once we get a response and store data, let's change the loading state
@@ -259,8 +257,8 @@ class Form extends React.Component {
             margin="small"
             size="large"
             variant="raised"
-            //component={Link}
-            //to="/results"
+            component={Link}
+            to="/results"
           >
             Submit
           </Button>
