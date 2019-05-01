@@ -6,6 +6,7 @@ import { Grid } from "@material-ui/core";
 import CardClass from "./CardClass";
 import andrew from "./Andrew.jpg";
 import ashwin from "./Ashwin.jpg";
+import vinnie from "./Vinnie.jpg";
 
 const styles = theme => ({
   root: {
@@ -63,7 +64,7 @@ class About extends React.Component {
             <CardClass
               name="Vinnie"
               subheader="subheader"
-              image=""
+              image={vinnie}
               subcontent="subcontent"
             />
           </Grid>
