@@ -66,7 +66,7 @@ class About extends React.Component {
               subheader="vz377@nyu.edu"
               image={vinnie}
               subcontent="Vinnie is currently a junior studying Computer Science at NYU, and is double minoring in Web Development
-              and Creative Writing. She's a New York native and in her free time, enjoys reading/writing poetry, thrift shopping, and attending concerts!"
+              and Creative Writing. She's a New York native and enjoys reading/writing poetry, thrift shopping, and attending concerts in her free time."
             />
           </Grid>
         </Grid>
