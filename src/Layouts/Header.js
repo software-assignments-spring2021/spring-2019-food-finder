@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import OpacityIcon from "@material-ui/icons/Opacity";
+import FaceIcon from "@material-ui/icons/Face";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { Link } from "react-router-dom";
 
@@ -75,6 +75,9 @@ class Header extends React.Component {
           </ListItem>
           <ListItem button component={Link} to="/team">
             <ListItemText primary="The Rouxlette Team" />
+            <ListItemIcon>
+              <FaceIcon />
+            </ListItemIcon>
           </ListItem>
           <ListItem button component={Link} to="/about">
             <ListItemText primary="About" />
