@@ -1,4 +1,4 @@
-import React from "react";
+import React, { isValidElement } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
@@ -13,12 +13,6 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-const query = {
-  zipcode: '',
-  cuisine_type: '',
-  borough: '' 
-
-};
 const styles = theme => ({
   root: {
     display: "flex",
@@ -36,63 +30,64 @@ class Form extends React.Component {
     this.state = {
       location: "",
       foodPreference: "",
-      walkingTime: "",
-      borough: "",
-      cuisine_type: "",
-      zipcode: ""
+      walkingTime: ""
     };
   }
-  
+
   onSubmit = e => {
-    console.log("test");
-    this.borough=this.location;
-    this.cuisine_type=this.foodPreference;
-    this.zipcode=this.location;
     this.getRestaurants();
     //axios.get("/test", { params: this.state }).then(res => {
-      //const query = res.data;
-      //this.setState({ query });
-   // });
+    //const query = res.data;
+    //this.setState({ query });
+    // });
   };
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
 
-
-
-
+  isValidLocation = location => {
+    if (location.length !== 5 && location.length !== 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   getRestaurants() {
     console.log(this.state);
-    axios.get("http://localhost:5000/test", {
-      params: {
-        location: this.state.location,
-        foodPreference: this.state.foodPreference,
-        walkingTime: this.state.walkingTime
-      }
-    })
+    axios
+      .get("http://localhost:5000/test", {
+        params: {
+          location: this.state.location,
+          foodPreference: this.state.foodPreference,
+          walkingTime: this.state.walkingTime
+        }
+      })
       // Once we get a response and store data, let's change the loading state
       .then(response => {
-        console.log(response)
+        console.log(response);
         //this.setState({
-         // restaurants: response.data,
-         // isLoading: false
+        // restaurants: response.data,
+        // isLoading: false
         //});
       })
       // If we catch any errors connecting, let's update accordingly
       .catch(error => this.setState({ error, isLoading: false }));
-    }
-
-
-
-
-
-
-
+  }
 
   render() {
     const { classes } = this.props;
+    const disabled = () => {
+      if (this.state.foodPreference.length !== 0) {
+        if (this.state.location.length === 5) {
+          if (this.state.walkingTime.length !== 0) {
+            return false;
+          }
+        }
+      }
+      return true;
+    };
     return (
       <Grid
         container
@@ -122,10 +117,7 @@ class Form extends React.Component {
               label="Your Zipcode"
               value={this.state.location}
               onChange={this.handleChange("location")}
-              error={
-                this.state.location.length !== 5 &&
-                this.state.location.length !== 0
-              }
+              error={this.isValidLocation(this.state.location)}
               helperText={
                 this.state.location.length !== 5 &&
                 this.state.location.length !== 0
@@ -257,6 +249,7 @@ class Form extends React.Component {
             margin="small"
             size="large"
             variant="raised"
+            disabled={disabled()}
             component={Link}
             to="/results"
           >
