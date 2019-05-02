@@ -4,12 +4,16 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const body_parser = require("body-parser");
+const bodyParser = require("body-parser");
 const PORT = (5000);
 const app = express();
 let db;
 const router = express.Router();
+const Schema = mongoose.Schema;
 //const state = require('./Form.js');
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // this is the first test route
 app.get("/test", function(request, response){
@@ -192,7 +196,54 @@ app.get("/test", function(request, response){
     // }
 });
 
-const url = "mongodb://localhost/restaurant";
+// template for user information
+const userSchema = new Schema({
+    username: {type: String},
+    password: {type: String},
+    email: {type: String},
+})
+
+const User = mongoose.model("User", userSchema, "userData");
+
+// make a post request for registration
+app.post("/test2", (req, res) => {
+    
+    // console.log("req: " + JSON.stringify(req.body));
+    const userObject = {
+        username: req.body.username, 
+        email: req.body.email,
+        password: req.body.password
+    };
+    
+    // finding a username in collection with the given username
+    User.findOne({username: userObject.username}, (error, user) => {   
+        if (error){
+            console.log("Error!");
+        } else if (user){ // username already exists
+            console.log("User with username " + userObject.username + " already exists inside the collection!");
+        } else { // new user! this should add the new user to collection
+            const newUser = new User({
+                username: userObject.username,
+                email: userObject.email,
+                password: userObject.password
+            })
+
+            newUser.save((error, savedUser) => {
+                if (error)
+                {
+                    console.log('failed' + error);
+                }
+                
+                res.json({
+                    user: savedUser // now have access to user
+                })
+            })
+        }
+    });
+
+})
+
+const url = "mongodb://localhost/restaurants";
 mongoose.connect(url, function(error, database)
 {
     if (error)
