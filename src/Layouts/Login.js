@@ -1,9 +1,10 @@
 import React from "react";
 import reactDOM from "react-dom";
 import "./Login.css";
+
 import TransitionGroup from "react-transition-group";
+
 import FadeTransition from "./transitions/fadeTransition";
-import axios from "axios";
 
 class LR extends React.Component {
   constructor(props) {
@@ -150,46 +151,6 @@ class RegisterBox extends React.Component {
       pwdState: null
     };
   }
-
-  submitRegister = e => {
-
-    axios.get("/test2", { params: this.state }).then(res => {
-      const userInfo = res.data;
-      this.setState({ userInfo });
-
-      console.log("res data: "+ res.data);
-    });
-
-    // will console log the statements but won't store into the variable
-    // an issue with the setState function and poosibly a need
-    // to implement post request in backend --> need to resolve
-    if (this.username === "") {
-      this.showValidationErr("username", "Username Cannot be empty!");
-    } else {
-        this.setState({
-          username: this.state.username,
-        });
-        console.log("username: "+ this.state.username);
-    }
-    if (this.state.email === "") {
-      this.showValidationErr("email", "Email Cannot be empty!");
-    } else {
-        this.setState({
-          email: this.state.email,
-        });
-        console.log("email: "+ this.state.email);
-    }
-    if (this.state.password === "") {
-      this.showValidationErr("password", "Password Cannot be empty!");
-    } else {
-        this.setState({
-          password: this.state.password,
-        });
-        console.log("pw: "+ this.state.password);
-    }
-
-  }
-
   validateFormRegister() {
     return (
       this.state.email.length > 0 &&
@@ -248,41 +209,20 @@ class RegisterBox extends React.Component {
       this.setState({ pwdState: "strong" });
     }
   }
-  
-  // commented this out and put in into the first submitRegister function above
- // submitRegister(e) {
 
-    // if (e.username === "") {
-    //   this.showValidationErr("username", "Username Cannot be empty!");
-    // } else {
-    //     console.log("state: "+ this.state);
-    //     this.setState({
-    //       username: this.state.username,
-    //     });
-    // }
-    // if (this.state.email === "") {
-    //   this.showValidationErr("email", "Email Cannot be empty!");
-    // } else {
-    //     console.log("state: "+ this.state);
-    //     this.setState({
-    //       email: this.state.email,
-    //     });
-    // }
-    // if (this.state.password === "") {
-    //   this.showValidationErr("password", "Password Cannot be empty!");
-    // } else {
-    //   console.log("state: "+ this.state);
-    //     this.setState({
-    //       password: this.state.password,
-    //     });
-    // }
+  submitRegister(e) {
+    console.log(this.state);
 
-    // axios.get("/test2", {params: this.state}).then(res => {
-    //   const userInfo = res.data;
-    //   this.setState({userInfo});
-    // });
-
- // }
+    if (this.state.username === "") {
+      this.showValidationErr("username", "Username Cannot be empty!");
+    }
+    if (this.state.email === "") {
+      this.showValidationErr("email", "Email Cannot be empty!");
+    }
+    if (this.state.password === "") {
+      this.showValidationErr("password", "Password Cannot be empty!");
+    }
+  }
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
