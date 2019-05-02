@@ -42,7 +42,7 @@ class About extends React.Component {
               subheader="akt352@nyu.edu"
               image={ashwin}
               subcontent="Ashwin Tanuku is currently a senior studying Computer Science at New York University, and is double minoring in Game Design and Japanese. 
-              When not trying to deal with the many, many listings of documents in Rouxlette's databases, he likes to frequent bookstores around the city and consume copious amounts of Green Tea."
+              When not trying to deal with the many, many listings of documents in Rouxlette's databases, he likes to frequent bookstores around the city and consume copious amounts of green tea."
             />
           </Grid>
           <Grid item md className={classes.card}>
