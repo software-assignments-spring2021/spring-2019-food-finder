@@ -9,8 +9,7 @@ import {
   Button,
   MenuItem,
   FormControl,
-  Grid,
-  FormHelperText
+  Grid
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -57,8 +56,7 @@ class Form extends React.Component {
 
   getRestaurants() {
     console.log(this.state);
-    axios
-      .get("http://localhost:5000/test", {
+    axios.get("http://localhost:5000/test", {
         params: {
           location: this.state.location,
           foodPreference: this.state.foodPreference,
@@ -74,7 +72,10 @@ class Form extends React.Component {
         //});
       })
       // If we catch any errors connecting, let's update accordingly
-      .catch(error => this.setState({ error, isLoading: false }));
+      .catch(error => {
+        console.log("ERROR" + error);
+        //this.setState({ error, isLoading: false }));
+      });
   }
 
   render() {
@@ -109,7 +110,6 @@ class Form extends React.Component {
               <MenuItem value="No Preference">No Preference</MenuItem>
               <MenuItem value="Nearby">Nearby</MenuItem>
             </Select>
-            <FormHelperText>How far are you willing to go?</FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12}>
@@ -124,7 +124,7 @@ class Form extends React.Component {
                 this.state.location.length !== 5 &&
                 this.state.location.length !== 0
                   ? "Not valid"
-                  : "Enter a zipcode"
+                  : ""
               }
               margin="normal"
             />
@@ -241,9 +241,6 @@ class Form extends React.Component {
                 Vietnamese/Cambodian/Malaysia
               </MenuItem>
             </Select>
-            <FormHelperText>
-              What type of food are you looking for?
-            </FormHelperText>
           </FormControl>
         </Grid>
         <br />
