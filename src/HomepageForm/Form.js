@@ -9,7 +9,8 @@ import {
   Button,
   MenuItem,
   FormControl,
-  Grid
+  Grid,
+  FormHelperText
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -108,6 +109,7 @@ class Form extends React.Component {
               <MenuItem value="No Preference">No Preference</MenuItem>
               <MenuItem value="Nearby">Nearby</MenuItem>
             </Select>
+            <FormHelperText>How far are you willing to go?</FormHelperText>
           </FormControl>
         </Grid>
         <Grid item xs={12}>
@@ -122,7 +124,7 @@ class Form extends React.Component {
                 this.state.location.length !== 5 &&
                 this.state.location.length !== 0
                   ? "Not valid"
-                  : ""
+                  : "Enter a zipcode"
               }
               margin="normal"
             />
@@ -239,6 +241,9 @@ class Form extends React.Component {
                 Vietnamese/Cambodian/Malaysia
               </MenuItem>
             </Select>
+            <FormHelperText>
+              What type of food are you looking for?
+            </FormHelperText>
           </FormControl>
         </Grid>
         <br />
