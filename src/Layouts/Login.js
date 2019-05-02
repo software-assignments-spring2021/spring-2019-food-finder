@@ -1,10 +1,9 @@
 import React from "react";
 import reactDOM from "react-dom";
 import "./Login.css";
-
 import TransitionGroup from "react-transition-group";
-
 import FadeTransition from "./transitions/fadeTransition";
+import axios from "axios";
 
 class LR extends React.Component {
   constructor(props) {
@@ -150,7 +149,24 @@ class RegisterBox extends React.Component {
       errors: [],
       pwdState: null
     };
+    this.submitRegister = this.submitRegister.bind(this);
   }
+
+  submitRegister = e => {
+    e.preventDefault();
+    axios.post("/test2", { 
+       username: this.state.username,
+       email: this.state.email, 
+       password: this.state.password}).then(res => {
+      
+      console.log(JSON.stringify(res));
+      // const userInfo = res.data;
+      // this.setState({ userInfo });
+      // console.log("res data: "+ res.data);
+    });
+   
+  }
+
   validateFormRegister() {
     return (
       this.state.email.length > 0 &&
@@ -210,19 +226,40 @@ class RegisterBox extends React.Component {
     }
   }
 
-  submitRegister(e) {
-    console.log(this.state);
+  // commented this out and put in into the first submitRegister function above
+//   submitRegister(e) {
 
-    if (this.state.username === "") {
-      this.showValidationErr("username", "Username Cannot be empty!");
-    }
-    if (this.state.email === "") {
-      this.showValidationErr("email", "Email Cannot be empty!");
-    }
-    if (this.state.password === "") {
-      this.showValidationErr("password", "Password Cannot be empty!");
-    }
-  }
+//     if (e.username === "") {
+//       this.showValidationErr("username", "Username cannot be empty!");
+//     } else {
+//         console.log("state: "+ this.state);
+//         this.setState({
+//           username: this.state.username,
+//         });
+//     }
+//     if (this.state.email === "") {
+//       this.showValidationErr("email", "Email cannot be empty!");
+//     } else {
+//         console.log("state: "+ this.state);
+//         this.setState({
+//           email: this.state.email,
+//         });
+//     }
+//     if (this.state.password === "") {
+//       this.showValidationErr("password", "Password cannot be empty!");
+//     } else {
+//       console.log("state: "+ this.state);
+//         this.setState({
+//           password: this.state.password,
+//         });
+//     }
+
+//     axios.get("/test2", {params: this.state}).then(res => {
+//       const userInfo = res.data;
+//       this.setState({userInfo});
+//     });
+
+//  }
 
   render() {
     const { username, email, password, confirmPassword } = this.state;
@@ -265,6 +302,7 @@ class RegisterBox extends React.Component {
     }
 
     return (
+      <form onSubmit={this.submitRegister}>
       <div className="inner-container">
         <div className="header">Register</div>
 
@@ -339,15 +377,16 @@ class RegisterBox extends React.Component {
           </div>
 
           <button
-            type="button"
+            type="submit"
             //className="login-btn"
-            onClick={this.submitRegister.bind(this)}
+          
             disabled={!isEnabled}
           >
             Register
           </button>
         </div>
       </div>
+      </form>
     );
   }
 }
