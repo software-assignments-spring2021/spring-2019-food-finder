@@ -39,9 +39,10 @@ class About extends React.Component {
           <Grid item md className={classes.card}>
             <CardClass
               name="Ashwin"
-              subheader="subheader"
+              subheader="akt352@nyu.edu"
               image={ashwin}
-              subcontent="subcontent"
+              subcontent="Ashwin Tanuku is currently a senior studying Computer Science at New York University, and is double minoring in Game Design and Japanese. 
+              When not trying to deal with the many, many listings of documents in Rouxlette's databases, he likes to frequent bookstores around the city and consume copious amounts of Green Tea."
             />
           </Grid>
           <Grid item md className={classes.card}>
