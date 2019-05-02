@@ -1,4 +1,4 @@
-import React, { isValidElement } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
@@ -9,7 +9,8 @@ import {
   Button,
   MenuItem,
   FormControl,
-  Grid
+  Grid,
+  FormHelperText
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -56,7 +57,8 @@ class Form extends React.Component {
 
   getRestaurants() {
     console.log(this.state);
-    axios.get("http://localhost:5000/test", {
+    axios
+      .get("http://localhost:5000/test", {
         params: {
           location: this.state.location,
           foodPreference: this.state.foodPreference,
@@ -111,6 +113,7 @@ class Form extends React.Component {
               <MenuItem value="Nearby">Nearby</MenuItem>
             </Select>
           </FormControl>
+          <FormHelperText>How far are you willing to go?</FormHelperText>
         </Grid>
         <Grid item xs={12}>
           <FormControl className={classes.formControl}>
@@ -124,7 +127,7 @@ class Form extends React.Component {
                 this.state.location.length !== 5 &&
                 this.state.location.length !== 0
                   ? "Not valid"
-                  : ""
+                  : "Enter a zipcode"
               }
               margin="normal"
             />
@@ -241,6 +244,9 @@ class Form extends React.Component {
                 Vietnamese/Cambodian/Malaysia
               </MenuItem>
             </Select>
+            <FormHelperText>
+              What type of food are you looking for?
+            </FormHelperText>
           </FormControl>
         </Grid>
         <br />
