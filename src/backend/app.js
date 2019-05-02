@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const PORT = (5000);
 const app = express();
+var cors = require('cors');
+app.use(cors());
 let db;
 const router = express.Router();
 const Schema = mongoose.Schema;
@@ -14,6 +16,19 @@ const Schema = mongoose.Schema;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+
+var whitelist = ['http://localhost:3000', 'http://localhost:5000']
+var corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+  app.use(cors(corsOptions));
 
 // this is the first test route
 app.get("/test", function(request, response){

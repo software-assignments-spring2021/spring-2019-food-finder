@@ -56,8 +56,7 @@ class Form extends React.Component {
 
   getRestaurants() {
     console.log(this.state);
-    axios
-      .get("http://localhost:5000/test", {
+    axios.get("http://localhost:5000/test", {
         params: {
           location: this.state.location,
           foodPreference: this.state.foodPreference,
@@ -73,7 +72,10 @@ class Form extends React.Component {
         //});
       })
       // If we catch any errors connecting, let's update accordingly
-      .catch(error => this.setState({ error, isLoading: false }));
+      .catch(error => {
+        console.log("ERROR" + error);
+        //this.setState({ error, isLoading: false }));
+      });
   }
 
   render() {
