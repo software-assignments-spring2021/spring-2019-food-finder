@@ -112,8 +112,8 @@ class Form extends React.Component {
               <MenuItem value="No Preference">No Preference</MenuItem>
               <MenuItem value="Nearby">Nearby</MenuItem>
             </Select>
+            <FormHelperText>How far are you willing to go?</FormHelperText>
           </FormControl>
-          <FormHelperText>How far are you willing to go?</FormHelperText>
         </Grid>
         <Grid item xs={12}>
           <FormControl className={classes.formControl}>
