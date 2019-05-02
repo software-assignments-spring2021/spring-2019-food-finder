@@ -6,6 +6,7 @@ import LR from "./Layouts/Login";
 import { BrowserRouter, Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import Results from "./Layouts/Results";
+import Team from "./Layouts/Team";
 import About from "./Layouts/About";
 import "typeface-roboto";
 
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/" component={Form} exact />
             <Route path="/login" component={LR} />
             <Route path="/results" component={Results} />
+            <Route path="/team" component={Team} />
             <Route path="/about" component={About} />
           </Fragment>
         </BrowserRouter>
