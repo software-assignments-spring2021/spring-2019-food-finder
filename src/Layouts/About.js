@@ -10,6 +10,7 @@ const styles = theme => ({
     padding: 50
   },
   text: {
+    marginTop: "3em",
     marginRight: "30%"
   }
 });
