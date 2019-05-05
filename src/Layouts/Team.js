@@ -7,6 +7,7 @@ import CardClass from "./CardClass";
 import andrew from "./Andrew.jpg";
 import ashwin from "./Ashwin.jpg";
 import vinnie from "./Vinnie.jpg";
+import tika from "./Tika.jpg"
 
 const styles = theme => ({
   root: {
@@ -56,9 +57,9 @@ class About extends React.Component {
           <Grid item md className={classes.card}>
             <CardClass
               name="Tika"
-              subheader="subheader"
-              image=""
-              subcontent="subcontent"
+              subheader="ak5352@nyu.edu"
+              image={tika}
+              subcontent="Tika is currently a senior at NYU, majoring in Computer Science and minoring in Web Development and Game Design. In her spare time, she likes to watch anime and play horror JRPGs."
             />
           </Grid>
           <Grid item md className={classes.card}>
