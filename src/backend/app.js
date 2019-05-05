@@ -171,7 +171,7 @@ app.get("/test", function(request, response){
     }
 
     //This is for zipcode and food pref, and no preference
-    else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "Nearby"){
+    else if(query.zipcode != "" && (query.cuisine_type != "" && query.cuisine_type != "No Preference") && query.borough == "No Preference"){
         const newQuery ={
             cuisine_type: request.query.foodPreference,
             zipcode: request.query.location,
