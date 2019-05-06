@@ -120,7 +120,11 @@ class Header extends React.Component {
             >
               Rouxlette
             </Typography>
-            <Tooltip title="Github Repository" placement="bottom">
+            <Tooltip
+              title="Github Repository"
+              placement="bottom"
+              leaveDelay={300}
+            >
               <IconButton
                 className={classes.rightButton}
                 color="inherit"

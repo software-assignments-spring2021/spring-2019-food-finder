@@ -12,7 +12,9 @@ import tika from "./Tika.jpg";
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: 50
+    padding: 50,
+    marginLeft: "3em",
+    marginRight: "3em"
   },
   card: {
     marginBottom: 50
