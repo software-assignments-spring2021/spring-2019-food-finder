@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { createBrowserHistory } from 'history';
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import {
@@ -13,7 +14,8 @@ import {
   FormHelperText
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
+import Results from "../Layouts/Results";
+const history = createBrowserHistory({forceRefresh:true});
 const styles = theme => ({
   root: {
     display: "flex",
@@ -24,23 +26,27 @@ const styles = theme => ({
     minWidth: 200
   }
 });
-
+//const restaurants=[];
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       location: "",
       foodPreference: "",
-      walkingTime: ""
+      walkingTime: "",
+      restaurants: []
     };
   }
 
   onSubmit = e => {
+    
     this.getRestaurants();
-    //axios.get("/test", { params: this.state }).then(res => {
-    //const query = res.data;
-    //this.setState({ query });
-    // });
+    setTimeout(function () {
+      
+      
+  }, 5000);
+   
+    
   };
 
   handleChange = name => event => {
@@ -54,11 +60,10 @@ class Form extends React.Component {
       return false;
     }
   };
-
+  
   getRestaurants() {
     console.log(this.state);
-    axios
-      .get("http://localhost:5000/test", {
+    axios.get("http://localhost:5000/test", {
         params: {
           location: this.state.location,
           foodPreference: this.state.foodPreference,
@@ -67,12 +72,13 @@ class Form extends React.Component {
       })
       // Once we get a response and store data, let's change the loading state
       .then(response => {
-        console.log(response);
-        //this.setState({
-        // restaurants: response.data,
-        // isLoading: false
-        //});
-      })
+       
+        console.log(response.data);
+      
+         this.state.restaurants= response.data;
+         //console.log(this.state.restaurants);
+         this.props.callbackFromParent(this.state.restaurants);
+        })
       // If we catch any errors connecting, let's update accordingly
       .catch(error => {
         console.log("ERROR" + error);
@@ -253,13 +259,15 @@ class Form extends React.Component {
         <Grid item xs={12}>
           <Button
             onClick={() => this.onSubmit()}
+           
             color="secondary"
             margin="small"
             size="large"
             variant="raised"
             disabled={disabled()}
-            component={Link}
-            to="/results"
+            
+            //component={Link}
+            //to="/results"
           >
             Submit
           </Button>
