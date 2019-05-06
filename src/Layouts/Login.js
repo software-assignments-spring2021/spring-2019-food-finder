@@ -72,11 +72,15 @@ class LoginBox extends React.Component {
     };
   }
 
+  submitLogin(e) {
+    console.log("in submit Login");
+    this.getUser();
+    //e.preventDefault();
+  }
+
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
-
-  submitLogin(e) {}
 
   handleEmailChange = evt => {
     this.setState({ email: evt.target.value });
@@ -85,6 +89,23 @@ class LoginBox extends React.Component {
   handlePasswordChange = evt => {
     this.setState({ password: evt.target.value });
   };
+
+  getUser(){
+    console.log(this.state);
+    axios
+      .get("/test3", {
+        params: {
+          email: this.state.email,
+          password: this.state.password,
+        }
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log("Error " + error);
+      })
+  }
 
   render() {
     const { email, password } = this.state;

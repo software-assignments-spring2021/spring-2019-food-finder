@@ -18,17 +18,17 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-var whitelist = ['http://localhost:3000', 'http://localhost:5000']
-var corsOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
-  app.use(cors(corsOptions));
+// var whitelist = ['http://localhost:3000', 'http://localhost:5000']
+// var corsOptions = {
+//     origin: function (origin, callback) {
+//       if (whitelist.indexOf(origin) !== -1) {
+//         callback(null, true)
+//       } else {
+//         callback(new Error('Not allowed by CORS'))
+//       }
+//     }
+//   }
+  app.use(cors());
 
 // this is the first test route
 app.get("/test", function(request, response){
@@ -222,8 +222,8 @@ const User = mongoose.model("User", userSchema, "userData");
 
 // make a post request for registration
 app.post("/test2", (req, res) => {
-    
-    // console.log("req: " + JSON.stringify(req.body));
+    //console.log("hi");
+    console.log("req: " + JSON.stringify(req.body));
     const userObject = {
         username: req.body.username, 
         email: req.body.email,
@@ -257,6 +257,55 @@ app.post("/test2", (req, res) => {
     });
 
 })
+
+// const loginSchema = new Schema({
+//     email: {type: String},
+//     password: {type: String},
+// });
+
+//const oldUser = mongoose.model("oldUser", loginSchema, "userData");
+app.get("/test3", function(request, response){
+    //console.log(request.loginSchema.email);
+    const loginObject = {
+        email: request.query.email,
+        password: request.query.password,
+    };
+    console.log(loginObject);
+    // db.collection("userData").find().limit(7).toArray(function(err, docs)
+    // {
+    //     if (err)
+    //     {
+    //         console.log("err");
+    //     }
+    //     else{ // if no error is encountered
+    //         // response object that is sending back the db info
+    //         // console.log("Server encountered no errors");
+    //         console.log(docs);
+    //         response.status(200).json(docs);
+    //     }
+    // });
+
+    db.collection("userData").findOne({email: loginObject.email}, (error, user) => {
+        if(error){
+            console.log("err");
+        }
+
+        else if(user){
+            console.log("this is the current user's email: " + loginObject.email);
+        }
+        else{
+            console.log("Could not find user");
+        } 
+    });
+    // console.log(userSearch);
+    
+    // if(userSearch){
+    //     const userSearchName = userSearch;
+    //     console.log(userSearchName);
+    // }
+
+
+});
 
 const url = "mongodb://localhost/restaurants";
 mongoose.connect(url, function(error, database)
