@@ -18,17 +18,17 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-var whitelist = ['http://localhost:3000', 'http://localhost:5000']
-var corsOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
-  app.use(cors(corsOptions));
+// var whitelist = ['http://localhost:3000', 'http://localhost:5000']
+// var corsOptions = {
+//     origin: function (origin, callback) {
+//       if (whitelist.indexOf(origin) !== -1) {
+//         callback(null, true)
+//       } else {
+//         callback(new Error('Not allowed by CORS'))
+//       }
+//     }
+//   }
+  app.use(cors());
 
 // this is the first test route
 app.get("/test", function(request, response){
@@ -267,8 +267,8 @@ app.post("/test2", (req, res) => {
 app.get("/test3", function(request, response){
     //console.log(request.loginSchema.email);
     const loginObject = {
-        email: request.body.email,
-        password: request.body.password,
+        email: request.query.email,
+        password: request.query.password,
     };
     console.log(loginObject);
     // db.collection("userData").find().limit(7).toArray(function(err, docs)
