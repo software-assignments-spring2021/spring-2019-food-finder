@@ -93,7 +93,7 @@ class LoginBox extends React.Component {
   getUser(){
     console.log(this.state);
     axios
-      .get("http://localhost:5000/test3", {
+      .get("/test3", {
         params: {
           email: this.state.email,
           password: this.state.password,
