@@ -7,11 +7,11 @@ import { Grid } from "@material-ui/core";
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: 50
+    padding: 50,
   },
   text: {
     marginTop: "3em",
-    marginRight: "30%"
+    marginRight: "30%",
   }
 });
 
@@ -24,13 +24,14 @@ class About extends React.Component {
           About Rouxlette
         </Typography>
         <Typography variant="body1" className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Rouxlette is the collective project of a team of five students at New York University hoping to help 
+          others make deciding where to eat, quick and easy. Whether you're in a hurry, are unfamiliar with the local digs, 
+          and/or are just plain indecisive, we've got you covered! Simply choose your desired preferences and Rouxlette
+          will generate five destinations just for you. 
+
+          <br></br> <br></br>
+          
+          With Rouxlette, finding a place to eat has never been easier!
         </Typography>
       </div>
     );
