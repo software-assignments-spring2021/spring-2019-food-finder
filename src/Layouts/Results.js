@@ -1,30 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Paper, Grid, Typography, Button } from "@material-ui/core";
 import axios from "axios";
-import Form from '../HomepageForm/Form.js';
+import Form from "../HomepageForm/Form.js";
+import { Link } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const query = {
   zipcode: Form.location,
   cuisine_type: Form.foodPreference,
-  borough: Form.walkingTime  
-
+  borough: Form.walkingTime
 };
 class App extends React.Component {
-state = {
-  restaurants: [],
-  isLoading: true,
-  errors: null
-};
+  state = {
+    restaurants: [],
+    isLoading: true,
+    errors: null
+  };
 
-
-// Let's our app know we're ready to render the data
-//componentDidMount() {
+  // Let's our app know we're ready to render the data
+  //componentDidMount() {
   //this.getRestaurants();
-//}
-// Putting that data to use
-/*render() {
+  //}
+  // Putting that data to use
+  /*render() {
   const { isLoading, posts } = this.state;
   return (
     <React.Fragment>
@@ -55,6 +55,9 @@ const styles = theme => ({
     padding: 25,
     textAlign: "center",
     color: theme.palette.text.secondary
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit
   }
 });
 
@@ -103,6 +106,12 @@ const Results = props => {
             dignissim neque sit amet, pretium quam.
           </Typography>
         </Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Button variant="contained" color="primary" component={Link} to="/">
+          <ArrowBackIcon className={classes.leftIcon} />
+          Back to Search
+        </Button>
       </Grid>
     </Grid>
   );
