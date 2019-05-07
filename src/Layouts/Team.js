@@ -10,6 +10,8 @@ import vinnie from "./Vinnie.jpg";
 import tika from "./Tika.jpg";
 import max from "./max.jpg";
 
+
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
