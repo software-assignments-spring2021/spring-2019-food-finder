@@ -12,10 +12,11 @@ class LR extends React.Component {
       isLoginOpen: true,
       isRegisterOpen: false
     };
+    
   }
 
   showLoginBox() {
-    this.setState({ isLoginOpen: true, isRegisterOpen: false });
+    this.setState({ isLoginOpen: true, isRegisterOpen: false});
   }
 
   showRegisterBox() {
@@ -66,9 +67,11 @@ class LR extends React.Component {
 class LoginBox extends React.Component {
   constructor(props) {
     super(props);
+    this.handleLoginClick.handle
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      isLoggedIn: false
     };
   }
 
@@ -76,6 +79,7 @@ class LoginBox extends React.Component {
     console.log("in submit Login");
     this.getUser();
     //e.preventDefault();
+    setTimeout(function(){}, 5000);
   }
 
   validateForm() {
