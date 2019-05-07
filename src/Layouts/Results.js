@@ -58,7 +58,7 @@ class Results extends React.Component {
                   <Typography variant="h4">{restaurant.name}</Typography>
                   <br />
                   <Typography variant="body1">
-                    An {restaurant.cuisine_type} restuarant, located at{" "}
+                    An {restaurant.cuisine_type} restaurant, located at{" "}
                     {restaurant.building_number} {restaurant.address} {", "}{" "}
                     {restaurant.zipcode} in {restaurant.borough}
                   </Typography>
