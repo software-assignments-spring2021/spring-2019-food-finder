@@ -7,11 +7,14 @@ import CardClass from "./CardClass";
 import andrew from "./Andrew.jpg";
 import ashwin from "./Ashwin.jpg";
 import vinnie from "./Vinnie.jpg";
+import tika from "./Tika.jpg";
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: 50
+    padding: 50,
+    marginLeft: "3em",
+    marginRight: "3em"
   },
   card: {
     marginBottom: 50
@@ -30,7 +33,7 @@ class Team extends React.Component {
         <Grid container spacing={40}>
           <Grid item md className={classes.card}>
             <CardClass
-              name="Andrew Zaw"
+              name="Andrew"
               subheader="azaw502@gmail.com"
               image={andrew}
               subcontent="Andrew Zaw is currently studying Computer Science at New York University, and hails from Miami. When not messing around with the UI and React design of Rouxlette, he enjoys cooking up dishes (follow him on Instagram @chef_zaw !!) and attempting to get to Diamond on League of Legends."
@@ -56,14 +59,14 @@ class Team extends React.Component {
           <Grid item md className={classes.card}>
             <CardClass
               name="Tika"
-              subheader="subheader"
-              image=""
-              subcontent="subcontent"
+              subheader="ak5352@nyu.edu"
+              image={tika}
+              subcontent="Tika is currently a senior at NYU, majoring in Computer Science and minoring in Web Development and Game Design. In her spare time, she likes to watch anime and play horror JRPGs."
             />
           </Grid>
           <Grid item md className={classes.card}>
             <CardClass
-              name="Vinnie Zhang"
+              name="Vinnie"
               subheader="vz377@nyu.edu"
               image={vinnie}
               subcontent="Vinnie is currently a junior studying Computer Science at NYU, and is double minoring in Web Development
