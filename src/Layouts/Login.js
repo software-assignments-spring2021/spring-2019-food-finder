@@ -50,7 +50,7 @@ class LR extends React.Component {
 
         <FadeTransition isOpen={this.state.isLoginOpen} duration={0}>
           <div className="box-container">
-            <LoginBox />
+            <LoginBox info = {this.props.callbackFromParent}  />
           </div>
         </FadeTransition>
 
@@ -70,7 +70,7 @@ class LoginBox extends React.Component {
     this.state = {
       email: "",
       password: "",
-      user: []
+      //user: []
     };
   }
 
@@ -106,8 +106,8 @@ class LoginBox extends React.Component {
         console.log(response);
 
         this.state.user = response.data;
-        //console.log(this.state.user);
-        this.props.callbackFromParent(this.state.user);
+        console.log(this.state.user);
+        this.props.info(this.state.user);
       })
       .catch(error => {
         console.log("Error " + error);
@@ -420,6 +420,8 @@ class RegisterBox extends React.Component {
 }
 
 export default LR;
+
+
 
 function validateEmail(email) {
   var validity = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
