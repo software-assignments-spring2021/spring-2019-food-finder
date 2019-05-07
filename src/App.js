@@ -45,8 +45,9 @@ class App extends Component {
   myCallbackLogin = dataFromChildLogin => {
     this.state.user = dataFromChildLogin;
     console.log(this.state.user);
-    this.loggedIn = true;
+    //setTimeout(function(){}, 3000);
     history.push("/");
+    console.log(this.state.user);
   };
 
   // loggedInTest = logbool => {
