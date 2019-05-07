@@ -7,7 +7,6 @@ import Form from "../HomepageForm/Form.js";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-
 const styles = theme => ({
   paper: {
     padding: 25,
@@ -16,6 +15,9 @@ const styles = theme => ({
   },
   leftIcon: {
     marginRight: theme.spacing.unit
+  },
+  grid: {
+    paddingTop: "1em"
   }
 });
 
@@ -24,91 +26,58 @@ class Results extends React.Component {
     super(props);
   }
 
-
-
-render(){
-  
-  const { classes } = this.props;
-  console.log(this.props.parentRestaurants);
-  return (
-    
-      
-  
-    <Grid
-      container
-      direction="column"
-      justify="center"
-      alignItems="center"
-      spacing={40}
-      style={{ minHeight: "70vh" }}
-    >
-      <Grid item xs={12}>
-        <Paper className={classes.paper} elevation={3}>
-        
-          <Typography variant="h4">{this.props.parentRestaurants[0].name}</Typography>
-          <br />
-          <Typography variant="body1">
-            An {this.props.parentRestaurants[0].cuisine_type} restuarant, located at {this.props.parentRestaurants[0].building_number} {" "} {this.props.parentRestaurants[0].address} {", "} {this.props.parentRestaurants[0].zipcode} in {this.props.parentRestaurants[0].borough}
-          </Typography>
-        </Paper>
+  render() {
+    const isEmpty = this.props.parentRestaurants.length === 0 ? true : false;
+    const { classes } = this.props;
+    console.log(this.props.parentRestaurants);
+    return (
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={40}
+        className={classes.grid}
+        style={{ minHeight: "70vh" }}
+      >
+        {isEmpty ? (
+          <Grid item xs={12}>
+            <Paper className={classes.paper} elevation={3}>
+              <Typography variant="h4">Sorry!</Typography>
+              <br />
+              <Typography variant="body1">
+                No restaurants found matching your criteria.
+              </Typography>
+            </Paper>
+          </Grid>
+        ) : (
+          this.props.parentRestaurants.map(restaurant => {
+            return (
+              <Grid item xs={12}>
+                <Paper className={classes.paper} elevation={3}>
+                  <Typography variant="h4">{restaurant.name}</Typography>
+                  <br />
+                  <Typography variant="body1">
+                    An {restaurant.cuisine_type} restuarant, located at{" "}
+                    {restaurant.building_number} {restaurant.address} {", "}{" "}
+                    {restaurant.zipcode} in {restaurant.borough}
+                  </Typography>
+                </Paper>
+              </Grid>
+            );
+          })
+        )}
+        <Grid item xs={12}>
+          <Button variant="contained" color="primary" component={Link} to="/">
+            <ArrowBackIcon className={classes.leftIcon} />
+            Back to Search
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.paper} elevation={3}>
-          <Typography variant="h4">{this.props.parentRestaurants[1].name}</Typography>
-          <br />
-          <Typography variant="body1">
-          An {this.props.parentRestaurants[1].cuisine_type} restuarant, located at {this.props.parentRestaurants[1].building_number} {" "} {this.props.parentRestaurants[1].address} {", "} {this.props.parentRestaurants[1].zipcode} in {this.props.parentRestaurants[1].borough}
-
-          </Typography>
-        </Paper>
-      </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.paper} elevation={3}>
-          <Typography variant="h4">{this.props.parentRestaurants[2].name}</Typography>
-          <br />
-          <Typography variant="body1">
-          An {this.props.parentRestaurants[2].cuisine_type} restuarant, located at {this.props.parentRestaurants[2].building_number} {" "} {this.props.parentRestaurants[2].address} {", "} {this.props.parentRestaurants[2].zipcode} in {this.props.parentRestaurants[2].borough}
-
-          </Typography>
-        </Paper>
-      </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.paper} elevation={3}>
-        
-          <Typography variant="h4">{this.props.parentRestaurants[3].name}</Typography>
-          <br />
-          <Typography variant="body1">
-          An {this.props.parentRestaurants[3].cuisine_type} restuarant, located at {this.props.parentRestaurants[3].building_number} {" "} {this.props.parentRestaurants[3].address} {", "} {this.props.parentRestaurants[3].zipcode} in {this.props.parentRestaurants[3].borough}
-
-          </Typography>
-        </Paper>
-      </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.paper} elevation={3}>
-        
-          <Typography variant="h4">{this.props.parentRestaurants[4].name}</Typography>
-          <br />
-          <Typography variant="body1">
-          An {this.props.parentRestaurants[4].cuisine_type} restuarant, located at {this.props.parentRestaurants[4].building_number} {" "} {this.props.parentRestaurants[4].address} {", "} {this.props.parentRestaurants[4].zipcode} in {this.props.parentRestaurants[4].borough}
-
-          </Typography>
-        </Paper>
-      </Grid>
-      <Grid item xs={12}>
-        <Button variant="contained" color="primary" component={Link} to="/">
-          <ArrowBackIcon className={classes.leftIcon} />
-          Back to Search
-        </Button>
-      </Grid>
-    </Grid>
-  
-
-  );
-
-
-
+    );
+  }
 }
-}
+
 Results.propTypes = {
   classes: PropTypes.object.isRequired
 };
