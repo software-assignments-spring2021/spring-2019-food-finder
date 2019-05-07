@@ -8,6 +8,9 @@ import andrew from "./Andrew.jpg";
 import ashwin from "./Ashwin.jpg";
 import vinnie from "./Vinnie.jpg";
 import tika from "./Tika.jpg";
+import max from "./max.jpg";
+
+
 
 const styles = theme => ({
   root: {
@@ -21,7 +24,7 @@ const styles = theme => ({
   }
 });
 
-class Team extends React.Component {
+class About extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -51,9 +54,9 @@ class Team extends React.Component {
           <Grid item md className={classes.card}>
             <CardClass
               name="Max"
-              subheader="subheader"
-              image=""
-              subcontent="subcontent"
+              subheader="mb6376@nyu.edu"
+              image={max}
+              subcontent="Max is currently a junior at New York University studying Computer Science and minoring in Web Development. He likes comic books, videogames, and going to small museums. Follow him @spliced_tea!"
             />
           </Grid>
           <Grid item md className={classes.card}>
@@ -78,8 +81,8 @@ class Team extends React.Component {
     );
   }
 }
-Team.propTypes = {
+About.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Team);
+export default withStyles(styles)(About);
