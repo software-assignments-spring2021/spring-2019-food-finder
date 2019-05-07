@@ -12,7 +12,9 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Tooltip
+  Tooltip,
+  Chip,
+  Avatar
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -38,6 +40,13 @@ const styles = {
   rightButton: {
     marginLeft: 10,
     marginRight: 10
+  },
+  chip: {
+    margin: 10
+  },
+  avatar: {
+    color: "#fff",
+    backgroundColor: "#355fb2"
   }
 };
 
@@ -54,7 +63,9 @@ class Header extends React.Component {
     super(props);
   }
   state = {
-    left: false
+    left: false,
+    loggedIn: false,
+    username: ""
   };
 
   toggleDrawer = open => () => {
@@ -143,14 +154,26 @@ class Header extends React.Component {
                 <GithubIcon />
               </IconButton>
             </Tooltip>
-            <Button
-              color="inherit"
-              component={Link}
-              to="/login"
-              className={classes.rightButton}
-            >
-              Login
-            </Button>
+            {this.state.loggedIn ? (
+              <Chip
+                avatar={
+                  <Avatar className={classes.avatar}>
+                    {this.state.username.charAt(0)}
+                  </Avatar>
+                }
+                label={this.state.username}
+                className={classes.chip}
+              />
+            ) : (
+              <Button
+                color="inherit"
+                component={Link}
+                to="/login"
+                className={classes.rightButton}
+              >
+                Login
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </div>
