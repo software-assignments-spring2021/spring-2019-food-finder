@@ -6,10 +6,12 @@ import Login from "./Layouts/NewLogin";
 import { createBrowserHistory } from "history";
 
 import LR from "./Layouts/Login";
-import LoginBox from "./Layouts/Login";
+import Loginbox from "./"
 import { BrowserRouter, Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import Results from "./Layouts/Results";
+//import Head from "./Layouts/Header";
+import Main from "./"
 import Team from "./Layouts/Team";
 import About from "./Layouts/About";
 import "typeface-roboto";
@@ -31,7 +33,6 @@ class App extends Component {
     super(props);
     this.state = {
       restaurants: [],
-      user: []
     };
   }
   myCallback = dataFromChild => {
@@ -41,30 +42,45 @@ class App extends Component {
   
   };
 
-  myCallbackLogin = dataFromChild => {
-    this.state.user = dataFromChild;
+  myCallbackLogin = dataFromChildLogin => {
+    this.state.user = dataFromChildLogin;
     console.log(this.state.user);
-    history.push("/header");
-  }
+    this.loggedIn = true;
+    history.push("/");
+  };
 
+  // loggedInTest = logbool => {
+  //   console.log(this.state.user);
+  //   if(this.state.user == null){
+  //     logbool = false;
+  //   }
+  //   else{
+  //     logbool = true;
+  //   }
+  //   console.log(logbool);
+  //   return logbool;
+  // }
+  //username={this.state.user} loggedIn={true}
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <Router history={history}>
           <Fragment>
-            <Header />
+            <Header username={this.state.user} loggedIn={false}/>
             <Route
               exact
               path="/"
               render={props => <Form callbackFromParent={this.myCallback} />}
-              //render2={props => <LoginBox callbackFromParent2={this.myCallback2} />}
             />
            
-            <Route path="/login" render={props => <LR callbackFromParent={this.myCallbackLogin}/>} />
+            <Route 
+              path="/login" 
+              render={props => <LR callbackFromParent={this.myCallbackLogin}/>}
+              /> 
            
             <Route
               path="/results"
-              render={props => (
+              render = {props => (
                 <Results parentRestaurants={this.state.restaurants} />
               )}
             />
