@@ -67,16 +67,15 @@ class LR extends React.Component {
 class LoginBox extends React.Component {
   constructor(props) {
     super(props);
-    this.handleLoginClick.handle
     this.state = {
       email: "",
       password: "",
-      isLoggedIn: false
+      user: []
     };
   }
 
-  submitLogin(e) {
-    console.log("in submit Login");
+  submitLogin = e => {
+    //console.log("in submit Login");
     this.getUser();
     //e.preventDefault();
     setTimeout(function(){}, 5000);
@@ -106,9 +105,9 @@ class LoginBox extends React.Component {
       .then(response => {
         console.log(response);
 
-        this.state.user= response.data;
-         //console.log(this.state.restaurants);
-        this.props.callbackFromParent(this.state.user);
+        this.state.user = response.data;
+        //console.log(this.state.user);
+        this.props.callbackFromParent2(this.state.user);
       })
       .catch(error => {
         console.log("Error " + error);
