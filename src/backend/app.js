@@ -301,7 +301,7 @@ app.get("/test3", function(request, response) {
     email: request.query.email,
     password: request.query.password
   };
-  console.log(loginObject);
+  //console.log(loginObject);
   // db.collection("userData").find().limit(7).toArray(function(err, docs)
   // {
   //     if (err)
@@ -323,6 +323,7 @@ app.get("/test3", function(request, response) {
         console.log("err");
       } else if (user) {
         console.log("this is the current user's email: " + loginObject.email);
+        response.status(200).json(user);
       } else {
         console.log("Could not find user");
       }

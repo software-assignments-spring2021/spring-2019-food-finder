@@ -75,7 +75,9 @@ class Header extends React.Component {
   };
 
   render() {
+    
     const { classes } = this.props;
+    //console.log(this.props.parentUser);
     const sideList = (
       <div className={classes.list}>
         <List>
@@ -154,31 +156,46 @@ class Header extends React.Component {
                 <GithubIcon />
               </IconButton>
             </Tooltip>
-            {this.state.loggedIn ? (
+            
+            {this.props.loggedIn ? (
               <Chip
                 avatar={
                   <Avatar className={classes.avatar}>
-                    {this.state.username.charAt(0)}
+                    {this.props.username.charAt(0)}
                   </Avatar>
                 }
-                label={this.state.username}
+                label={this.props.username}
                 className={classes.chip}
               />
+              // <Typography
+              //   variant= "h6"
+              //   color ="inherit"
+              //   style ={{textDecoration:"none"}}
+              //   >
+              //  Hello!
+              // </Typography>
+             
             ) : (
               <Button
-                color="inherit"
-                component={Link}
-                to="/login"
-                className={classes.rightButton}
-              >
-                Login
-              </Button>
+              color="inherit"
+              component={Link}
+              to="/login"
+              className={classes.rightButton}
+              onClick = {() => (this.props.loggedIn = true)}
+            >
+              Login
+            </Button>
             )}
           </Toolbar>
         </AppBar>
       </div>
     );
   }
+}
+
+Header.defaultProps = {
+  loggedIn: false,
+  username: ""
 }
 
 Header.propTypes = {

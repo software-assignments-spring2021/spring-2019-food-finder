@@ -12,10 +12,11 @@ class LR extends React.Component {
       isLoginOpen: true,
       isRegisterOpen: false
     };
+    
   }
 
   showLoginBox() {
-    this.setState({ isLoginOpen: true, isRegisterOpen: false });
+    this.setState({ isLoginOpen: true, isRegisterOpen: false});
   }
 
   showRegisterBox() {
@@ -49,7 +50,7 @@ class LR extends React.Component {
 
         <FadeTransition isOpen={this.state.isLoginOpen} duration={0}>
           <div className="box-container">
-            <LoginBox />
+            <LoginBox info = {this.props.callbackFromParent}  />
           </div>
         </FadeTransition>
 
@@ -68,14 +69,16 @@ class LoginBox extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      //user: []
     };
   }
 
-  submitLogin(e) {
-    console.log("in submit Login");
+  submitLogin = e => {
+    //console.log("in submit Login");
     this.getUser();
     //e.preventDefault();
+    setTimeout(function(){}, 5000);
   }
 
   validateForm() {
@@ -101,6 +104,10 @@ class LoginBox extends React.Component {
       })
       .then(response => {
         console.log(response);
+
+        this.state.user = response.data;
+        console.log(this.state.user);
+        this.props.info(this.state.user);
       })
       .catch(error => {
         console.log("Error " + error);
@@ -413,6 +420,8 @@ class RegisterBox extends React.Component {
 }
 
 export default LR;
+
+
 
 function validateEmail(email) {
   var validity = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -6,9 +6,12 @@ import Login from "./Layouts/NewLogin";
 import { createBrowserHistory } from "history";
 
 import LR from "./Layouts/Login";
+import Loginbox from "./"
 import { BrowserRouter, Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import Results from "./Layouts/Results";
+//import Head from "./Layouts/Header";
+import Main from "./"
 import Team from "./Layouts/Team";
 import About from "./Layouts/About";
 import "typeface-roboto";
@@ -29,30 +32,56 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurants: [],
     };
   }
   myCallback = dataFromChild => {
     this.state.restaurants = dataFromChild;
     console.log(this.state.restaurants);
     history.push("/results");
+  
   };
 
+  myCallbackLogin = dataFromChildLogin => {
+    this.state.user = dataFromChildLogin;
+    console.log(this.state.user);
+    //setTimeout(function(){}, 3000);
+    history.push("/");
+    console.log(this.state.user);
+  };
+
+  // loggedInTest = logbool => {
+  //   console.log(this.state.user);
+  //   if(this.state.user == null){
+  //     logbool = false;
+  //   }
+  //   else{
+  //     logbool = true;
+  //   }
+  //   console.log(logbool);
+  //   return logbool;
+  // }
+  //username={this.state.user} loggedIn={true}
   render() {
     return (
       <MuiThemeProvider theme={theme}>
         <Router history={history}>
           <Fragment>
-            <Header />
+            <Header username={this.state.user} loggedIn={false}/>
             <Route
               exact
               path="/"
               render={props => <Form callbackFromParent={this.myCallback} />}
             />
-            <Route path="/login" component={LR} />
+           
+            <Route 
+              path="/login" 
+              render={props => <LR callbackFromParent={this.myCallbackLogin}/>}
+              /> 
+           
             <Route
               path="/results"
-              render={props => (
+              render = {props => (
                 <Results parentRestaurants={this.state.restaurants} />
               )}
             />
