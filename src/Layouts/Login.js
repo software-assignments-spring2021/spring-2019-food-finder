@@ -101,6 +101,10 @@ class LoginBox extends React.Component {
       })
       .then(response => {
         console.log(response);
+
+        this.state.user= response.data;
+         //console.log(this.state.restaurants);
+        this.props.callbackFromParent(this.state.user);
       })
       .catch(error => {
         console.log("Error " + error);
