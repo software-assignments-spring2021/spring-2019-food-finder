@@ -6,6 +6,7 @@ import Login from "./Layouts/NewLogin";
 import { createBrowserHistory } from "history";
 
 import LR from "./Layouts/Login";
+import LoginBox from "./Layouts/Login";
 import { BrowserRouter, Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import Results from "./Layouts/Results";
@@ -29,14 +30,22 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurants: [],
+      user: []
     };
   }
   myCallback = dataFromChild => {
     this.state.restaurants = dataFromChild;
     console.log(this.state.restaurants);
     history.push("/results");
+  
   };
+
+  myCallbackLogin = dataFromChild => {
+    this.state.user = dataFromChild;
+    console.log(this.state.user);
+    history.push("/header");
+  }
 
   render() {
     return (
@@ -48,8 +57,11 @@ class App extends Component {
               exact
               path="/"
               render={props => <Form callbackFromParent={this.myCallback} />}
+              //render2={props => <LoginBox callbackFromParent2={this.myCallback2} />}
             />
-            <Route path="/login" component={LR} />
+           
+            <Route path="/login" render={props => <LR callbackFromParent={this.myCallbackLogin}/>} />
+           
             <Route
               path="/results"
               render={props => (
