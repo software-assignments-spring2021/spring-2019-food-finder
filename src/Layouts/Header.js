@@ -77,7 +77,7 @@ class Header extends React.Component {
   render() {
     
     const { classes } = this.props;
-    console.log(this.props.parentUser);
+    console.log(this.props.userData);
     const sideList = (
       <div className={classes.list}>
         <List>
