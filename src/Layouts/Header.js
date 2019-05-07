@@ -73,14 +73,14 @@ class Header extends React.Component {
               <HomeIcon />
             </ListItemIcon>
           </ListItem>
+          <ListItem button component={Link} to="/about">
+            <ListItemText primary="About" />
+          </ListItem>
           <ListItem button component={Link} to="/team">
             <ListItemText primary="The Rouxlette Team" />
             <ListItemIcon>
               <FaceIcon />
             </ListItemIcon>
-          </ListItem>
-          <ListItem button component={Link} to="/about">
-            <ListItemText primary="About" />
           </ListItem>
         </List>
       </div>

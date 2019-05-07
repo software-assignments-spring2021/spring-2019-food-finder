@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import {
@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Results from "../Layouts/Results";
-const history = createBrowserHistory({forceRefresh:true});
+const history = createBrowserHistory({ forceRefresh: true });
 const styles = theme => ({
   root: {
     display: "flex",
@@ -34,23 +34,25 @@ class Form extends React.Component {
       location: "",
       foodPreference: "",
       walkingTime: "",
-      restaurants: []
+      restaurants: [],
+      zipcodeVisible: false
     };
   }
 
   onSubmit = e => {
-    
     this.getRestaurants();
-    setTimeout(function () {
-      
-      
-  }, 5000);
-   
-    
+    setTimeout(function() {}, 5000);
   };
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
+    if (name === "walkingTime") {
+      if (event.target.value === "Nearby") {
+        this.setState({ zipcodeVisible: true });
+      } else {
+        this.setState({ zipcodeVisible: false });
+      }
+    }
   };
 
   isValidLocation = location => {
@@ -60,10 +62,11 @@ class Form extends React.Component {
       return false;
     }
   };
-  
+
   getRestaurants() {
     console.log(this.state);
-    axios.get("http://localhost:5000/test", {
+    axios
+      .get("http://localhost:5000/test", {
         params: {
           location: this.state.location,
           foodPreference: this.state.foodPreference,
@@ -72,13 +75,12 @@ class Form extends React.Component {
       })
       // Once we get a response and store data, let's change the loading state
       .then(response => {
-       
         console.log(response.data);
-      
-         this.state.restaurants= response.data;
-         //console.log(this.state.restaurants);
-         this.props.callbackFromParent(this.state.restaurants);
-        })
+
+        this.state.restaurants = response.data;
+        //console.log(this.state.restaurants);
+        this.props.callbackFromParent(this.state.restaurants);
+      })
       // If we catch any errors connecting, let's update accordingly
       .catch(error => {
         console.log("ERROR" + error);
@@ -90,7 +92,7 @@ class Form extends React.Component {
     const { classes } = this.props;
     const disabled = () => {
       if (this.state.foodPreference.length !== 0) {
-        if (this.state.location.length === 5) {
+        if (!this.isValidLocation(this.state.location)) {
           if (this.state.walkingTime.length !== 0) {
             return false;
           }
@@ -121,24 +123,26 @@ class Form extends React.Component {
             <FormHelperText>How far are you willing to go?</FormHelperText>
           </FormControl>
         </Grid>
-        <Grid item xs={12}>
-          <FormControl className={classes.formControl}>
-            <TextField
-              id="standard-name"
-              label="Your Zipcode"
-              value={this.state.location}
-              onChange={this.handleChange("location")}
-              error={this.isValidLocation(this.state.location)}
-              helperText={
-                this.state.location.length !== 5 &&
-                this.state.location.length !== 0
-                  ? "Not valid"
-                  : "Enter a zipcode"
-              }
-              margin="normal"
-            />
-          </FormControl>
-        </Grid>
+        {this.state.zipcodeVisible ? (
+          <Grid item xs={12}>
+            <FormControl className={classes.formControl}>
+              <TextField
+                id="standard-name"
+                label="Your Zipcode"
+                value={this.state.location}
+                onChange={this.handleChange("location")}
+                error={this.isValidLocation(this.state.location)}
+                helperText={
+                  this.state.location.length !== 5 &&
+                  this.state.location.length !== 0
+                    ? "Not valid"
+                    : "Enter a zipcode"
+                }
+                margin="normal"
+              />
+            </FormControl>
+          </Grid>
+        ) : null}
         <Grid item xs={12}>
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor="foodPreference">
@@ -259,15 +263,11 @@ class Form extends React.Component {
         <Grid item xs={12}>
           <Button
             onClick={() => this.onSubmit()}
-           
             color="secondary"
             margin="small"
             size="large"
             variant="raised"
             disabled={disabled()}
-            
-            //component={Link}
-            //to="/results"
           >
             Submit
           </Button>

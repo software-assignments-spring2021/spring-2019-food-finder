@@ -49,7 +49,6 @@ class App extends Component {
               path="/"
               render={props => <Form callbackFromParent={this.myCallback} />}
             />
-            {/*} <Form callbackFromParent={this.myCallback} />*/}
             <Route path="/login" component={LR} />
             <Route
               path="/results"
