@@ -18,6 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import FaceIcon from "@material-ui/icons/Face";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import RestaurantIcon from "@material-ui/icons/Restaurant";
 import { Link } from "react-router-dom";
 
 const styles = {
@@ -75,6 +76,9 @@ class Header extends React.Component {
           </ListItem>
           <ListItem button component={Link} to="/about">
             <ListItemText primary="About" />
+            <ListItemIcon>
+              <RestaurantIcon />
+            </ListItemIcon>
           </ListItem>
           <ListItem button component={Link} to="/team">
             <ListItemText primary="The Rouxlette Team" />
