@@ -43,10 +43,10 @@ class App extends Component {
   };
 
   myCallbackLogin = dataFromChildLogin => {
-    this.state.user = dataFromChildLogin;
+    this.setState({user: dataFromChildLogin});
     console.log(this.state.user);
     //setTimeout(function(){}, 3000);
-    //history.push("/");
+ //history.push("/");
     //console.log(this.state.user);
    // console.log(this.state.user.username);
     console.log(this.state.user.loggedIn);
@@ -58,7 +58,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Router history={history}>
           <Fragment>
-            <Header user={this.state.user} />
+            <Header/>
             <Route
               exact
               path="/"

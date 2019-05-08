@@ -75,12 +75,17 @@ class Header extends React.Component {
     this.setState({
       ["left"]: open
     });
+    console.log("Hi i'm in the header");
+    console.log(this.props.user.loggedIn);
+    console.log("hi in the header");
   };
-
+  
   //console.log(this.props.loggedIn);
   render() {
+    console.log(this.props.loggedIn);
     //console.log(this.state.loggedIn);
     const { classes } = this.props;
+    console.log(this.props.user.loggedIn);
     const sideList = (
       <div className={classes.list}>
         <List>
@@ -105,8 +110,10 @@ class Header extends React.Component {
         </List>
       </div>
     );
-
+    //console.log(this.props.user.loggedIn);
+    //console.log("See meeee");
     return (
+      
       <div className={classes.root}>
         <Drawer open={this.state.left} onClose={this.toggleDrawer(false)}>
           <div
@@ -119,6 +126,7 @@ class Header extends React.Component {
           </div>
         </Drawer>
         <AppBar position="static">
+        
           <Toolbar>
             <Tooltip title="Menu">
               <IconButton
@@ -140,11 +148,13 @@ class Header extends React.Component {
             >
               Rouxlette
             </Typography>
+            
             <Tooltip
               title="Github Repository"
               placement="bottom"
               leaveDelay={300}
             >
+            
               <IconButton
                 className={classes.rightButton}
                 color="inherit"
@@ -156,20 +166,25 @@ class Header extends React.Component {
                   )
                 }
               >
+              
                 <GithubIcon />
               </IconButton>
+              
             </Tooltip>
-            
             {this.props.user.loggedIn ? (
+              
               <Chip
                 avatar={
                   <Avatar className={classes.avatar}>
                     {this.props.user.username.charAt(0)}
                   </Avatar>
                 }
+                
                 label={this.props.user.username}
                 className={classes.chip}
+                
               />
+              
             ) : (
               <Button
               color="inherit"
@@ -187,11 +202,15 @@ class Header extends React.Component {
   }
 }
 
-// Header.defaultProps = {
-//   //loggedIn: false,
-//   //username: ""
-// }
-
+Header.defaultProps = {
+  user: {
+    //loggedIn: false,
+    //username: ""
+   
+  }
+  
+}
+//console.log("hi");
 Header.propTypes = {
   classes: PropTypes.object.isRequired
 };

@@ -328,6 +328,7 @@ app.get("/test3", function(request, response) {
       } else if (user) {
         console.log("this is the current user's email: " + loginObject.email);
         user.loggedIn = true;
+        console.log(user.loggedIn);
         // user.setState((state)=>{
         //   state.loggedIn = true;
         // });
