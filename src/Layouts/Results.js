@@ -54,7 +54,7 @@ class Results extends React.Component {
           this.props.parentRestaurants.map(restaurant => {
             return (
               <Grid item xs={12}>
-                <Paper className={classes.paper} elevation={3}>
+                <Paper className={classes.paper} elevation={2}>
                   <Typography variant="h4">{restaurant.name}</Typography>
                   <br />
                   <Typography variant="body1">
