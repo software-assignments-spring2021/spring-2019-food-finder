@@ -8,10 +8,21 @@ import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = theme => ({
+  "@keyframes fadein": {
+    from: {
+      opacity: 0,
+      transform: "translateY(-15px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0)"
+    }
+  },
   paper: {
     padding: 25,
     textAlign: "center",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    animation: "1s ease-out 0s 1 fadein"
   },
   leftIcon: {
     marginRight: theme.spacing.unit

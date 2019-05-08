@@ -10,9 +10,30 @@ import vinnie from "./Vinnie.jpg";
 import tika from "./Tika.jpg";
 import max from "./max.jpg";
 
-
-
 const styles = theme => ({
+  "@keyframes fade-in-right": {
+    from: {
+      opacity: 0,
+      transform: "translateX(-15px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateX(0)"
+    }
+  },
+  "@keyframes fade-in-bottom": {
+    from: {
+      opacity: 0,
+      transform: "translateY(15px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0)"
+    }
+  },
+  title: {
+    animation: "0.5s ease-out 0s 1 fade-in-right"
+  },
   root: {
     flexGrow: 1,
     padding: 50,
@@ -20,7 +41,8 @@ const styles = theme => ({
     marginRight: "3em"
   },
   card: {
-    marginBottom: 50
+    marginBottom: 50,
+    animation: "1s ease-out 0s 1 fade-in-bottom"
   }
 });
 
@@ -29,7 +51,7 @@ class About extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" gutterBottom className={classes.title}>
           Meet the Rouxlette Team
         </Typography>
         <br />

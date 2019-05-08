@@ -24,6 +24,17 @@ import RestaurantIcon from "@material-ui/icons/Restaurant";
 import { Link } from "react-router-dom";
 
 const styles = {
+  "@keyframes slideInFromTop": {
+    "0%": {
+      transform: "translateY(-100%)"
+    },
+    "100%": {
+      transform: "translateY(0)"
+    }
+  },
+  header: {
+    animation: "0.5s ease-out 0s 1 slideInFromTop"
+  },
   root: {
     flexGrow: 1
   },
@@ -75,7 +86,6 @@ class Header extends React.Component {
   };
 
   render() {
-    
     const { classes } = this.props;
     //console.log(this.props.parentUser);
     const sideList = (
@@ -104,7 +114,7 @@ class Header extends React.Component {
     );
 
     return (
-      <div className={classes.root}>
+      <div className={classes.header}>
         <Drawer open={this.state.left} onClose={this.toggleDrawer(false)}>
           <div
             tabIndex={0}
@@ -156,7 +166,7 @@ class Header extends React.Component {
                 <GithubIcon />
               </IconButton>
             </Tooltip>
-            
+
             {this.props.loggedIn ? (
               <Chip
                 avatar={
@@ -167,6 +177,7 @@ class Header extends React.Component {
                 label={this.props.username}
                 className={classes.chip}
               />
+            ) : (
               // <Typography
               //   variant= "h6"
               //   color ="inherit"
@@ -174,17 +185,16 @@ class Header extends React.Component {
               //   >
               //  Hello!
               // </Typography>
-             
-            ) : (
+
               <Button
-              color="inherit"
-              component={Link}
-              to="/login"
-              className={classes.rightButton}
-              onClick = {() => (this.props.loggedIn = true)}
-            >
-              Login
-            </Button>
+                color="inherit"
+                component={Link}
+                to="/login"
+                className={classes.rightButton}
+                onClick={() => (this.props.loggedIn = true)}
+              >
+                Login
+              </Button>
             )}
           </Toolbar>
         </AppBar>
@@ -196,7 +206,7 @@ class Header extends React.Component {
 Header.defaultProps = {
   loggedIn: false,
   username: ""
-}
+};
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired
