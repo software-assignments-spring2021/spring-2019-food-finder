@@ -292,33 +292,14 @@ app.post("/test2", (req, res) => {
   });
 });
 
-// const loginSchema = new Schema({
-//     email: {type: String},
-//     password: {type: String},
-// });
 
-//const oldUser = mongoose.model("oldUser", loginSchema, "userData");
 app.get("/test3", function(request, response) {
-  //console.log(request.loginSchema.email);
+  
   const loginObject = {
     email: request.query.email,
     password: request.query.password
   };
-  //console.log(loginObject);
-  // db.collection("userData").find().limit(7).toArray(function(err, docs)
-  // {
-  //     if (err)
-  //     {
-  //         console.log("err");
-  //     }
-  //     else{ // if no error is encountered
-  //         // response object that is sending back the db info
-  //         // console.log("Server encountered no errors");
-  //         console.log(docs);
-  //         response.status(200).json(docs);
-  //     }
-  // });
-
+ 
   db.collection("userData").findOne(
     {email: loginObject.email},
     (error, user) => {
@@ -329,21 +310,12 @@ app.get("/test3", function(request, response) {
         console.log("this is the current user's email: " + loginObject.email);
         user.loggedIn = true;
         console.log(user.loggedIn);
-        // user.setState((state)=>{
-        //   state.loggedIn = true;
-        // });
         response.status(200).json(user);
       } else {
         console.log("Could not find user");
       }
     }
   );
-  // console.log(userSearch);
-
-  // if(userSearch){
-  //     const userSearchName = userSearch;
-  //     console.log(userSearchName);
-  // }
 });
 
 const url = "mongodb://localhost/restaurants";

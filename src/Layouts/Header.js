@@ -63,13 +63,10 @@ class Header extends React.Component {
     super(props);
   }
   state = {
-    left: false,
-    //loggedIn: false,
-    //username: "",
-    
+    left: false,    
   };
   
-  // console.log(state.username)
+  
 
   toggleDrawer = open => () => {
     this.setState({
@@ -80,10 +77,8 @@ class Header extends React.Component {
     console.log("hi in the header");
   };
   
-  //console.log(this.props.loggedIn);
+
   render() {
-    console.log(this.props.loggedIn);
-    //console.log(this.state.loggedIn);
     const { classes } = this.props;
     console.log(this.props.user.loggedIn);
     const sideList = (
@@ -110,10 +105,8 @@ class Header extends React.Component {
         </List>
       </div>
     );
-    //console.log(this.props.user.loggedIn);
-    //console.log("See meeee");
+
     return (
-      
       <div className={classes.root}>
         <Drawer open={this.state.left} onClose={this.toggleDrawer(false)}>
           <div
@@ -203,14 +196,10 @@ class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  user: {
-    //loggedIn: false,
-    //username: ""
-   
+  user: {   
   }
   
 }
-//console.log("hi");
 Header.propTypes = {
   classes: PropTypes.object.isRequired
 };

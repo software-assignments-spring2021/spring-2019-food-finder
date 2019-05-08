@@ -6,12 +6,9 @@ import Login from "./Layouts/NewLogin";
 import { createBrowserHistory } from "history";
 
 import LR from "./Layouts/Login";
-import Loginbox from "./"
 import { BrowserRouter, Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import Results from "./Layouts/Results";
-//import Head from "./Layouts/Header";
-import Main from "./"
 import Team from "./Layouts/Team";
 import About from "./Layouts/About";
 import "typeface-roboto";
@@ -45,20 +42,16 @@ class App extends Component {
   myCallbackLogin = dataFromChildLogin => {
     this.setState({user: dataFromChildLogin});
     console.log(this.state.user);
-    //setTimeout(function(){}, 3000);
- //history.push("/");
-    //console.log(this.state.user);
-   // console.log(this.state.user.username);
+    history.push("/");
     console.log(this.state.user.loggedIn);
   };
 
   render() {
-    //console.log(user.loggedIn);
     return (
       <MuiThemeProvider theme={theme}>
         <Router history={history}>
           <Fragment>
-            <Header/>
+            <Header user = {this.state.user}/>
             <Route
               exact
               path="/"
