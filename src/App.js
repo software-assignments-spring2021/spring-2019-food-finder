@@ -46,28 +46,19 @@ class App extends Component {
     this.state.user = dataFromChildLogin;
     console.log(this.state.user);
     //setTimeout(function(){}, 3000);
-    history.push("/");
+    //history.push("/");
     console.log(this.state.user);
+   // console.log(this.state.user.username);
+    console.log(this.state.user.loggedIn);
   };
 
-  // loggedInTest = logbool => {
-  //   console.log(this.state.user);
-  //   if(this.state.user == null){
-  //     logbool = false;
-  //   }
-  //   else{
-  //     logbool = true;
-  //   }
-  //   console.log(logbool);
-  //   return logbool;
-  // }
-  //username={this.state.user} loggedIn={true}
   render() {
+    //console.log(user.loggedIn);
     return (
       <MuiThemeProvider theme={theme}>
         <Router history={history}>
           <Fragment>
-            <Header username={this.state.user} loggedIn={false}/>
+            <Header user={this.state.user} />
             <Route
               exact
               path="/"
@@ -76,8 +67,8 @@ class App extends Component {
            
             <Route 
               path="/login" 
-              render={props => <LR callbackFromParent={this.myCallbackLogin}/>}
-              /> 
+              render={props => (<LR callbackFromParent={this.myCallbackLogin}/>)}
+            /> 
            
             <Route
               path="/results"

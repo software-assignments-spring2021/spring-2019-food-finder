@@ -70,6 +70,7 @@ class LoginBox extends React.Component {
     this.state = {
       email: "",
       password: "",
+      loggedIn: false,
       //user: []
     };
   }
@@ -100,13 +101,19 @@ class LoginBox extends React.Component {
         params: {
           email: this.state.email,
           password: this.state.password,
+          loggedIn: this.state.loggedIn,
         }
       })
       .then(response => {
         console.log(response);
-
+        // this.setState((state) => {
+        //   state.user.loggedIn = true;
+        // });
         this.state.user = response.data;
         console.log(this.state.user);
+        // this.setState((state) => {
+        //   state.loggedIn = true;
+        // });
         this.props.info(this.state.user);
       })
       .catch(error => {
@@ -175,7 +182,8 @@ class RegisterBox extends React.Component {
       confirmPassword: "",
       newUser: null,
       errors: [],
-      pwdState: null
+      pwdState: null,
+      loggedIn: false,
     };
     this.submitRegister = this.submitRegister.bind(this);
   }
@@ -185,7 +193,8 @@ class RegisterBox extends React.Component {
     axios.post("/test2", { 
        username: this.state.username,
        email: this.state.email, 
-       password: this.state.password}).then(res => {
+       password: this.state.password,
+       loggedIn: this.state.loggedIn}).then(res => {
       
       console.log(JSON.stringify(res));
       // const userInfo = res.data;

@@ -65,8 +65,11 @@ class Header extends React.Component {
   state = {
     left: false,
     loggedIn: false,
-    username: ""
+    username: "",
+    
   };
+  
+  // console.log(state.username)
 
   toggleDrawer = open => () => {
     this.setState({
@@ -74,10 +77,10 @@ class Header extends React.Component {
     });
   };
 
+  //console.log(this.props.loggedIn);
   render() {
-    
+    console.log(this.state.loggedIn);
     const { classes } = this.props;
-    //console.log(this.props.parentUser);
     const sideList = (
       <div className={classes.list}>
         <List>
@@ -157,7 +160,7 @@ class Header extends React.Component {
               </IconButton>
             </Tooltip>
             
-            {this.props.loggedIn ? (
+            {!(this.props.loggedIn) ? (
               <Chip
                 avatar={
                   <Avatar className={classes.avatar}>
@@ -167,21 +170,12 @@ class Header extends React.Component {
                 label={this.props.username}
                 className={classes.chip}
               />
-              // <Typography
-              //   variant= "h6"
-              //   color ="inherit"
-              //   style ={{textDecoration:"none"}}
-              //   >
-              //  Hello!
-              // </Typography>
-             
             ) : (
               <Button
               color="inherit"
               component={Link}
               to="/login"
               className={classes.rightButton}
-              onClick = {() => (this.props.loggedIn = true)}
             >
               Login
             </Button>
@@ -194,7 +188,7 @@ class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  loggedIn: false,
+  //loggedIn: false,
   username: ""
 }
 
