@@ -47,7 +47,7 @@ class App extends Component {
     console.log(this.state.user);
     //setTimeout(function(){}, 3000);
     //history.push("/");
-    console.log(this.state.user);
+    //console.log(this.state.user);
    // console.log(this.state.user.username);
     console.log(this.state.user.loggedIn);
   };
