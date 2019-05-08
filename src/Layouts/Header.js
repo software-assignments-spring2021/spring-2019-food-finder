@@ -24,6 +24,17 @@ import RestaurantIcon from "@material-ui/icons/Restaurant";
 import { Link } from "react-router-dom";
 
 const styles = {
+  "@keyframes slideInFromTop": {
+    "0%": {
+      transform: "translateY(-100%)"
+    },
+    "100%": {
+      transform: "translateY(0)"
+    }
+  },
+  header: {
+    animation: "0.5s ease-out 0s 1 slideInFromTop"
+  },
   root: {
     flexGrow: 1
   },
@@ -107,7 +118,7 @@ class Header extends React.Component {
     );
 
     return (
-      <div className={classes.root}>
+      <div className={classes.header}>
         <Drawer open={this.state.left} onClose={this.toggleDrawer(false)}>
           <div
             tabIndex={0}
@@ -164,8 +175,7 @@ class Header extends React.Component {
               </IconButton>
               
             </Tooltip>
-            {this.props.user.loggedIn ? (
-              
+            {this.props.user.loggedIn ? (  
               <Chip
                 avatar={
                   <Avatar className={classes.avatar}>
@@ -176,8 +186,7 @@ class Header extends React.Component {
                 label={this.props.user.username}
                 className={classes.chip}
                 
-              />
-              
+              /> 
             ) : (
               <Button
               color="inherit"
@@ -197,9 +206,11 @@ class Header extends React.Component {
 
 Header.defaultProps = {
   user: {   
+  loggedIn: false,
+  username: ""
   }
   
-}
+};
 Header.propTypes = {
   classes: PropTypes.object.isRequired
 };

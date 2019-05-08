@@ -8,10 +8,21 @@ import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = theme => ({
+  "@keyframes fadein": {
+    from: {
+      opacity: 0,
+      transform: "translateY(-15px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0)"
+    }
+  },
   paper: {
     padding: 25,
     textAlign: "center",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    animation: "1s ease-out 0s 1 fadein"
   },
   leftIcon: {
     marginRight: theme.spacing.unit
@@ -42,7 +53,7 @@ class Results extends React.Component {
       >
         {isEmpty ? (
           <Grid item xs={12}>
-            <Paper className={classes.paper} elevation={3}>
+            <Paper className={classes.paper} elevation={2}>
               <Typography variant="h4">Sorry!</Typography>
               <br />
               <Typography variant="body1">
@@ -54,7 +65,7 @@ class Results extends React.Component {
           this.props.parentRestaurants.map(restaurant => {
             return (
               <Grid item xs={12}>
-                <Paper className={classes.paper} elevation={3}>
+                <Paper className={classes.paper} elevation={2}>
                   <Typography variant="h4">{restaurant.name}</Typography>
                   <br />
                   <Typography variant="body1">

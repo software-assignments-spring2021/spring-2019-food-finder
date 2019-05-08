@@ -17,6 +17,32 @@ import { Link } from "react-router-dom";
 import Results from "../Layouts/Results";
 const history = createBrowserHistory({ forceRefresh: true });
 const styles = theme => ({
+  fade: {
+    animation: "1s ease-out 0s 1 fadein"
+  },
+  "@keyframes fadein": {
+    from: {
+      opacity: 0,
+      transform: "translateY(-15px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0)"
+    }
+  },
+  "@keyframes fadeinBottom": {
+    from: {
+      opacity: 0,
+      transform: "translateY(15px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0)"
+    }
+  },
+  button: {
+    animation: "2s ease-out 0s 1 fadeinBottom"
+  },
   root: {
     display: "flex",
     flexWrap: "wrap"
@@ -107,6 +133,7 @@ class Form extends React.Component {
         justify="center"
         alignItems="center"
         spacing={0}
+        className={classes.fade}
       >
         <br />
         <Grid item xs={12}>
@@ -268,6 +295,7 @@ class Form extends React.Component {
             size="large"
             variant="raised"
             disabled={disabled()}
+            className={classes.button}
           >
             Submit
           </Button>
