@@ -42,7 +42,7 @@ class Results extends React.Component {
       >
         {isEmpty ? (
           <Grid item xs={12}>
-            <Paper className={classes.paper} elevation={3}>
+            <Paper className={classes.paper} elevation={2}>
               <Typography variant="h4">Sorry!</Typography>
               <br />
               <Typography variant="body1">
