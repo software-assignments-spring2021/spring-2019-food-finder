@@ -34,6 +34,7 @@ a group of Computer Science students attempting to do what software developers d
 2. Open up a Terminal/Command Prompt window and navigate to the directory that the application is installed in. This should be called "food-finder".
 3. Once you are in the directory, type:
    `npm install`
+   This will install the dependencies.
 4. After the dependencies have been installed, type:
    `npm start`
 5. The development environment should now be started at localhost:3000.
