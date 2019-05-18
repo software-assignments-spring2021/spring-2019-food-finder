@@ -20,18 +20,31 @@ a group of Computer Science students attempting to do what software developers d
 
 ## Building and Testing
 
-### To Run NodeJS stuff in the Test folder
+### To Run The App After Downloading the Repository
 
-1. Make sure you have NodeJS installed on your computer
-2. Open up a Terminal/Command Prompt window and make sure that your current directory is "Test"
-3. Type:
-   `node test.js`
-4. Open up a web browser and type: localhost:3000
+#### Section 1: Setting up the database
+1. Make sure you have MongoDB installed on your computer. Ensure you know how to load data into MongoDB and query it on your computer. 
+2. Navigate to **food-finder/Data** and make sure you save the complete paths to **Restaurant-Data.json** and **User-Data.json**
+3. Open up a Terminal/Command Prompt window and import the data in with the following commands:
 
-### To Run ReactJS stuff
+`mongoimport --db restaurants --collection restaurantData --drop --file <the complete path to Restaurant-Data.json from your computer>`
 
-1. Make sure you have Node.js and npm installed on your computer. (npm installation should come with Node.js)
-2. Open up a Terminal/Command Prompt window and navigate to the directory that the application is installed in. This should be called "food-finder".
+Followed by
+
+`mongoimport --db restaurants --collection userData --drop --file <the complete path to User-Data.json from your computer>`
+
+Here is an example: 
+`mongoimport --db restaurants --collection restaurantData --drop --file C:\Users\EnemyField\Documents\Desktop\Agile\Food-Finder\Data\Restaurant-Data.json`
+
+Followed by
+
+`mongoimport --db restaurants --collection userData --drop --file C:\Users\EnemyField\Documents\Desktop\Agile\Food-Finder\Data\User-Data.json`
+
+4. You should now have the database loaded up. Please open up the **restaurants** database and keep it open. 
+
+#### Section 2: Downloading dependencies and running the app
+1. Make sure you have Node.js and npm installed on your computer. (npm installation should come with Node.js).
+2. Open up a Terminal/Command Prompt window and navigate to the directory that the application is installed in. This should be called **food-finder**.
 3. Once you are in the directory, type:
    `npm install`
    This will install the dependencies.
