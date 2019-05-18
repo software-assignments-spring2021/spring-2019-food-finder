@@ -52,6 +52,13 @@ Followed by
    `npm start`
 5. The development environment should now be started at localhost:3000.
 
+###Section 3: Running the server connection to the backend
+1. You should first cd into the src folder from the main food-finder directory
+2. Then cd into the backend folder
+3. Run the command:
+   'node app.js'
+4. The server should now be fully operational for you
+
 ### Testing
 
 #### Testing Items in the "Test" Folder
